@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+.main{
+  width: 1400px;
+  height: 1000px;
+  margin: 0 auto;
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding-top: 36px;
+  height: 76px;
+  margin-left: 250px;
+  margin-right: 215px;
+}
+
+.navbar {
+  width: 100%;
+  /* width: 972px; */
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 85px;
+}
+
+
+.logo {
+  font-weight: 700;
+  font-size: 24px;
+  color:rgba(30, 14, 98, 1);
+}
+
+.logoText{
+  text-decoration: none;
+}
+
+.navs a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #999;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0px;
+}
+
+.buttons{
+  display: inline-block;
+  row-gap: 50px;
+  
+}
+
+.buttons a.login {
+  margin-right: 10px;
+  color: #00c9b7;
+  text-decoration: none;
+}
+
+.buttons a.signup {
+  padding: 10px 20px;
+  background-color: #00c9b7;
+  color:rgba(255, 255, 255, 1);
+  line-height: 26px;
+  border-radius: 110px;
+  font-size: 18px;
+
+  text-decoration: none;
+}
+
+.mainText {
+  width: 714;
+  height: 140;
+  margin-top: 161px;
+  margin-left: 343px;
+  margin-right: 343px;
+
+}
+
+.mainText h2 {
+  color:rgba(30, 14, 98, 1);
+  font-weight: 700;
+  font-size: 58px;
+  line-height: 70px;
+  letter-spacing: -1px;
+  margin-bottom: 32px;
+  /* align-items: center; */
+}
+
+.mainText p {
+  color:rgba(21, 20, 57, 0.4);
+  align-items: center;
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: 0px;
+  margin-bottom: 59px;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color:rgba(233, 58, 125, 1);
+  color: rgba(255, 255, 255, 1);
+  line-height: 26px;
+  padding: 15px 30px;
+  border-radius: 100px;
+  text-decoration: none;
+  margin-bottom: 111px;
+  font-size: 20px;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+  margin-left: 187px;
+  margin-right: 187px;
+  margin-bottom: 93.8;
+}
+
+.feature {
+  width: 228px;
+  height: 219.2px
+}
+
+.feature img {
+  width: 170px;
+  height: 110px;
+  border-radius: 10px;
+  margin-bottom: 25.2px;
+  object-fit: cover;
+}
+
+.feature p {
+font-weight: 500;
+font-size: 18px;
+line-height: 28px;
+letter-spacing: 0px;
+text-align: center;
+color:rgba(21, 20, 57, 0.4);
+;
+}
+
+.separator{
+  border: 2px solid rgba(235, 234, 237, 1);
+  /* width: 2px; */
+  height: 109px;
+}
