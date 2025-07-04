@@ -22,7 +22,7 @@ body {
   justify-content: center;
   padding-top: 36px;
   height: 76px;
-  margin-left: 250px;
+  margin-left: 213px;
   margin-right: 215px;
 }
 
@@ -41,21 +41,39 @@ body {
   font-weight: 700;
   font-size: 24px;
   color:rgba(30, 14, 98, 1);
+  margin-right: 199px;
 }
 
 .logoText{
   text-decoration: none;
 }
+.navs{
+   /* padding-left:50px; */
+}
 
 .navs a {
-  margin: 0 10px;
+  /* margin: 0 10px; */
+  width: 42px;
+  height: 22px;
   text-decoration: none;
   color: #999;
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
   letter-spacing: 0px;
+  margin-right: 32px;
 }
+
+/* .navs a{
+  width: 33px;
+  height: 22px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-decoration: none;
+  color:rgba(21, 20, 57, 0.4);
+  /* padding-right: 32px */
 
 .buttons{
   display: inline-block;
@@ -64,19 +82,23 @@ body {
 }
 
 .buttons a.login {
-  margin-right: 10px;
+  margin-left: 106px;
   color: #00c9b7;
+  font-size: 16px;
   text-decoration: none;
 }
 
 .buttons a.signup {
-  padding: 10px 20px;
+  padding: 7px 18px;
+  width: 64px;
+  height: 26px;
+  font-weight: 500px;
   background-color: #00c9b7;
   color:rgba(255, 255, 255, 1);
   line-height: 26px;
   border-radius: 110px;
   font-size: 18px;
-
+  margin-left: 22px;
   text-decoration: none;
 }
 
@@ -148,6 +170,7 @@ body {
   margin-left: 187px;
   margin-right: 187px;
   margin-bottom: 93.8;
+  height: 247.2px;
 }
 
 .feature {
