@@ -2,13 +2,14 @@
     margin: 0;
     padding: 0;
     font-family: 'Heebo', sans-serif;
+    box-sizing: border-box;
 }
 
 .header{
-    margin: 0 auto;
-    width: 1200px;
+    /* margin: 0 auto; */
+    /* width: 1200px; */
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
     
 }
 
@@ -46,14 +47,18 @@
 
 .container{
     width: 1200px;
-    margin: auto;
+    margin: 0 auto;
+}
+
+.mainSection{
     display: flex;
     justify-content: space-between;
-    
 }
+
 
 .leftContent{
     margin-left: 148px;
+    
 }
 
 .leftContent h1{
@@ -84,9 +89,7 @@
   padding: 17px 20px;
   text-decoration: none;
   color: #ffffff;
-  border-radius: 25px;
-  box-shadow: 0 4px 10px rgba(255, 100, 100, 0.3);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
 }
 
 .leftContent a:hover {
@@ -103,21 +106,24 @@
     width: 243px;
     height: 243px;
     margin-right: 149px;
-    /* margin-right: 180px; */
     object-fit: cover;
     border-radius: 50%;
+    border-bottom: 13px solid #EDF7FA;
+;
 }
 
+
 .secondary{
-    margin: auto;
-    width: 1200px;
-    height: 396px;
     background-color: #EDF7FA;
+    padding-bottom: 40px;
 }
 
 .secondary-header{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+    
 }
 
 .secondary .recentPosts{
@@ -142,30 +148,29 @@
     margin-top: 27px;
 }
 
-.cards{
-    display: flex;
-    justify-content: space-evenly;
-    margin-left:  148px;
-    margin-right: 148px;
+.cards {
+  display: flex;
+  gap: 32px;
+  flex: 1;
+  margin-left: 148px;  
+  margin-right: 148px;
+  
 }
 
-.card{
-    background-color: #FFFFFF;
-    /* padding-left: 23px;
-    padding-top: 24px;
-    padding-right: 21px;
-    padding-bottom: 7px; original from file seemed inappropriate so making evenly*/
-    padding: 20px 30px;
-    border-radius: 4px;
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  
 }
+
 
 .card h3{
     font-weight: 700;
     font-size: 26px;
     color: #21243D;
-    line-height: 32px;/*changed bcz original seemed to be bit incorrect*/
-    letter-spacing: 0px;
-    margin-bottom: 27px;
+    /* line-height: 100%; */
+    margin-bottom: 17px;
 }
 
 .internalSections{
@@ -203,19 +208,15 @@
 
 
 .container2{
-    width: 1200px;
-    margin: auto;
-    display: block;
-    /* justify-content: space-between; */
-    
+    display: block;   
+    margin-right: 148px;
 }
 .work{
     display: flex;
     align-items: flex-start;
     gap:18px;
-    /* margin-bottom: 35px; */
-    /* border-bottom: 1px solid #e0e0e0; */
 }
+
 .container2 img{
     width: 246px;
     height: 180px;
@@ -270,14 +271,12 @@
 }
 
 .line {
-  width: 858px;
   height: 1px;
   background-color: #E0E0E0;
   border: none;
-  /* margin: 40px auto; spacing + center align */
   margin-left: 146px;
   margin-top: 35px;
-  margin-right: 148px;
+  /* margin-right: 148px; */
   margin-bottom: 35px;
 }
 
@@ -295,15 +294,8 @@
     margin-bottom: 20px;
     
 }
-
-.footerIcons .fa-brands fa-square-facebook{
-    color: #D92231;
-}
-
-
-
 .container3{
-    width: 1200px;
+    /* width: 1200px; */
     margin: auto;
 }
 
