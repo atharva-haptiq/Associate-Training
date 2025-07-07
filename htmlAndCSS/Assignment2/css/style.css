@@ -100,6 +100,8 @@
 .image{
     text-align: right;
     flex: 1;
+    width: auto;
+    
 }
 
 .image img{
@@ -107,9 +109,7 @@
     height: 243px;
     margin-right: 149px;
     object-fit: cover;
-    border-radius: 50%;
-    border-bottom: 13px solid #EDF7FA;
-;
+    border-radius:50%;
 }
 
 
@@ -216,11 +216,16 @@
     align-items: flex-start;
     gap:18px;
 }
-
-.container2 img{
-    width: 246px;
+.workImage{
+    width: auto;
     height: 180px;
+}
+.container2 img{
+    /* width: 246px; */
+    height: 100%;
+    overflow: hidden;
     margin-left: 146px;
+    border-radius: 6px;
 }
 
 .content{
@@ -288,12 +293,18 @@
     padding-left: 459px;
 }
 
-.footerIcons i{
+.footerIcons i {
     font-size: 34px;
     color: #21243D;
     margin-bottom: 20px;
-    
+    transition: color 0.3s ease; /* smooth color transition */
 }
+
+.footerIcons i:hover {
+    color:#D92231;
+;
+}
+
 .container3{
     /* width: 1200px; */
     margin: auto;
