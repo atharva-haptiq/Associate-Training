@@ -33,7 +33,7 @@ body{
 
 .navbar ul{
     display: flex;
-    gap: 56px;
+    gap: 8px;
     list-style: none;
 }
 
@@ -45,6 +45,16 @@ body{
     line-height: 120%;
     letter-spacing: 0%;
     color: #FFFFFF;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.header a:hover{
+    border: 1px solid #FFFFFF ;
+    border-radius: 16.5px;
 }
 
 .banner{
@@ -192,7 +202,8 @@ body{
     font-weight: 600%;
     font-size: 14px;
     line-height: 120%;
-    letter-spacing: 40%;
+    /* letter-spacing: 40%; */
+    letter-spacing: 7px;
     text-transform: uppercase;
     color: #6C00FF;
     margin-bottom: 16px;
@@ -231,6 +242,14 @@ body{
     line-height: 140%;
     letter-spacing: 0%;
     color: #393E46;
+    align-items: center;
+    text-align: center;
+}
+
+.infoContent ul li i{
+    width: 16px;
+    height: 16px;
+    color: #6C00FF;
 }
 
 .featuresImage{
@@ -281,4 +300,84 @@ body{
     object-fit: cover;
     position: relative;
     z-index: 1;
+}
+
+.footer{
+    padding-left: 185px;
+    padding-right: 186px;
+    padding-top: 128px;
+    padding-bottom: 128px;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+.footer .footerLogo{
+    margin-bottom: 16px;
+}
+
+.footerContentList ul{
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    margin-bottom: 16px;
+    justify-content: center;
+    text-align: center;
+
+
+}
+
+.footerContentList a{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    color: #393E46;
+    text-decoration: none;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+
+.footer p{
+    padding: 8px 24px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    color: #393E46;
+}
+
+.downArrowWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 94px;
+}
+
+.downArrow {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.downArrow img:first-child {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.downArrow img:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22.660131454467795;
+  height: 19.9932270050049;
+  transform: translate(-50%, -50%);
+  display: block;
 }
