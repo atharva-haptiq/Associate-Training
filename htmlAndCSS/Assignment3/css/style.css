@@ -20,7 +20,7 @@ body{
     margin: auto;
 }
 
-.header{
+.headerSection{
     display: flex;
     justify-content: space-between;
     padding-top: 32px;
@@ -28,7 +28,7 @@ body{
 
 }
 
-.header .logo{
+.headerSection .logo{
     margin-left: 128px;
     /* width: 711px;
     height: 26px; */
@@ -40,7 +40,7 @@ body{
     list-style: none;
 }
 
-.header a{
+.headerSection a{
     text-decoration: none;
     color: #1a0202;
     font-weight: 400;
@@ -55,7 +55,7 @@ body{
     transition: all 0.3s ease;
 }
 
-.header a:hover{
+.headerSection a:hover{
     border: 1px solid #FFFFFF ;
     border-radius: 16.5px;
 }
