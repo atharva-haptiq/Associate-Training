@@ -119,6 +119,7 @@ body{
     display: flex;
     align-items: center;
     text-align: center;
+    margin-bottom: 128px;
 }
 
 .services h3{
@@ -143,14 +144,14 @@ body{
 
 .serviceTypes{
     display: flex;
-    gap: 40px;
+    gap: 103px;
     justify-content: center;
     flex-wrap: wrap;
 
 } 
 .serviceIcons {
   max-width: 310px;
-  margin-bottom: 128px;
+  /* margin-bottom: 128px; */
 }
 
 .iconWrapper {
