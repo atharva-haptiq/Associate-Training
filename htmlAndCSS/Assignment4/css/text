@@ -1,0 +1,67 @@
+.banner {
+    background: linear-gradient(89.85deg, #000000 0.13%, #000000 0.14%, rgba(0, 0, 0, 0) 99.56%),
+    url(../images/bg.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex; 
+    align-items: center;
+    box-sizing: border-box;
+     margin-top: -104px;
+}
+
+
+.bannerContent h1{
+    font-weight: 800;
+    font-size: 58px;
+    line-height: 80px;
+    letter-spacing: 0.2x;
+    color: #FFFFFF;
+    margin-bottom: 35px;
+}
+
+.bannerContent p{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.2px;
+    color: #FFFFFF;
+    margin-bottom: 35px;
+} 
+
+.bannerContent{
+    width: 1050px;
+    height: 566px;
+    /* background-color: #000000; */
+}
+
+.bannerButtons{
+    display: flex;
+    gap: 10px;
+
+}
+
+.innerSquare{
+    width: 599px;
+    height: 342px;
+}
+.bannerButton{
+    padding: 15px 36px;
+    border: 1px solid #FFFFFF;
+    border-radius: 37px;
+    transition: all 0.3s ease;
+}
+
+.bannerButton:hover{
+    border-radius: 37px;
+    border: 1px solid #23A6F0;
+    background-color: #23A6F0;
+}
+.bannerButton a{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.2px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
