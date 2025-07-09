@@ -105,11 +105,19 @@ body{
     height: 100vh;
     background-size: cover;
     background-position: center;
-    display: flex; 
     box-sizing: border-box;
-     margin-top: -104px;
+    margin-top: -104px;
 }
 
+.bannerContentWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    /* padding-top: 112px; */
+    padding-left: 45px;
+    /* padding-bottom: 112px; */
+}
 
 .bannerContent h1{
     font-weight: 800;
@@ -130,10 +138,12 @@ body{
 } 
 
 .bannerContent{
-    width: 1050px;
+    /* width: 1050px; */
+    /* display: flex;
+    justify-content: flex-start; */
     /* height: 566px; */
     /* width: 100%; */
-    padding-top: 112px;
+    /* padding-top: 112px; */
     /* background-color: #000000; */
 }
 
