@@ -106,7 +106,6 @@ body{
     background-size: cover;
     background-position: center;
     display: flex; 
-    align-items: center;
     box-sizing: border-box;
      margin-top: -104px;
 }
@@ -133,6 +132,7 @@ body{
 .bannerContent{
     width: 1050px;
     /* height: 566px; */
+    /* width: 100%; */
     padding-top: 112px;
     /* background-color: #000000; */
 }
@@ -147,18 +147,32 @@ body{
     width: 599px;
     height: 342px;
 }
-.bannerButton{
+.leftBannerButton{
     padding: 15px 36px;
-    border: 1px solid #FFFFFF;
-    border-radius: 37px;
-    transition: all 0.3s ease;
-}
-
-.bannerButton:hover{
     border-radius: 37px;
     border: 1px solid #23A6F0;
     background-color: #23A6F0;
 }
+.leftBannerButton a{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.2px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.bannerButton{
+    padding: 15px 36px;
+    border: 1px solid #FFFFFF;
+    border-radius: 37px;
+    /* transition: all 0.3s ease; */
+}
+
+/* .bannerButton:hover{
+    border-radius: 37px;
+    border: 1px solid #23A6F0;
+    background-color: #23A6F0;
+} */
 .bannerButton a{
     font-weight: 700;
     font-size: 14px;
@@ -223,7 +237,7 @@ body{
 
 .industryReviews{
     padding-top: 112px;
-    padding-bottom: 112px;
+    padding-bottom: 80px;
 }
 
 .industryReviewsHeader{
@@ -419,19 +433,22 @@ body{
 .projectCard {
   position: relative;
   width: 100%;
-  max-width: 350px;
+  max-width: 331px;
   overflow: hidden;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 14.58%, rgba(56, 56, 56, 0.84) 100%);
 }
 
 .projectCard img {
   width: 100%;
   object-fit: cover;
-  height: auto;
+  height: 100%;
   display: block;
+
+
 }
 .projectCardContent {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 20px;
   right: 20px;
   color: #fff;
@@ -450,5 +467,55 @@ body{
 .projectCard p{
     font-weight: 500;
     font-size: 20px;
-    
+    line-height: 30px;
+    letter-spacing: 0.2px;
+    color: #FFFFFF;
+    margin-bottom: 15px;
 }
+
+ .viewProjectButton {
+  margin-bottom: 17.5px;
+}
+ .viewProjectButton a {
+  /* display: inline-block;  */
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  color: #FFFFFF;
+  padding: 10px 36px;
+  border-radius: 37px;
+  background-color: #23A6F0;
+}
+
+.industryProjectsHeader{
+    padding-top: 112px;
+    padding-bottom: 112px;
+}
+
+.industryReviewsHeader{
+    display: block;
+    text-align: center;
+    /* margin-left: 328px;
+    margin-right: 328px; */
+    margin-bottom: 96px;
+}
+
+.industryReviewsHeader h2{
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 57px;
+    letter-spacing: 0.2px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+.industryReviewsHeader p{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: #FFFFFF;
+}
+
