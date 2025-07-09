@@ -15,8 +15,13 @@ body{
     max-width: 1200px;
     margin: auto;
 }
-.header{
-    margin-bottom: 13px;
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background: transparent;
 }
 .header .container{
     display: flex;
@@ -99,7 +104,16 @@ body{
 
 
 /* banner section */
+
 .banner {
+  background: linear-gradient(89.85deg, #000000 0.13%, #000000 0.14%, rgba(0, 0, 0, 0) 99.56%),
+    url(../images/bg.jpg);
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  box-sizing: border-box;
+}
+/* .banner {
     background: linear-gradient(89.85deg, #000000 0.13%, #000000 0.14%, rgba(0, 0, 0, 0) 99.56%),
     url(../images/bg.jpg);
     height: 100vh;
@@ -107,7 +121,7 @@ body{
     background-position: center;
     box-sizing: border-box;
     margin-top: -104px;
-}
+} */
 
 .bannerContentWrapper{
     display: flex;
@@ -528,4 +542,3 @@ body{
     letter-spacing: 0.2px;
     color: #FFFFFF;
 }
-

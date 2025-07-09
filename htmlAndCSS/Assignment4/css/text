@@ -65,3 +65,172 @@
     color: #FFFFFF;
     text-decoration: none;
 }
+
+
+---------------------
+
+.container{
+    max-width: 1200px;
+    margin: auto;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.headerSection {
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  background: transparent;
+  padding: 24px 0;
+}
+
+.navBarWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoText {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0.1px;
+  color: #ffffff;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  padding: 8px 20px;
+  border-radius: 16px;
+  transition: 0.3s ease;
+}
+
+
+
+
+.authButtons {
+  display: flex;
+  gap: 12px;
+}
+
+.loginButton {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  padding: 12px 20px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.signupButton {
+  width: 214px;
+  height: 52px;
+  background: #23A6F0;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  color: #fff;
+}
+
+.signupArrow {
+  width: 14px;
+  height: 14px;
+}
+
+/* Hero Section */
+.bannerSection {
+  height: 100vh;
+   background-image: 
+    linear-gradient(89.85deg, #000000 0.13%, #000000 0.14%, rgba(0, 0, 0, 0) 99.56%),
+    url('../images/bg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  
+  
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: flex-start; */
+  height: 100%;
+  /* max-width: 600px; */
+  color: #ffffff;
+}
+
+.heroHeading {
+  font-weight: 800;
+  font-size: 58px;
+  line-height: 80px;
+  letter-spacing: 0.2px;
+  margin-bottom: 24px;
+}
+
+.heroSubtext {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.2px;
+  margin-bottom: 48px;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 112px;
+}
+
+.btnPrimary,
+.btnSecondary {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 37px;
+  padding: 15px 36px;
+  display: inline-block;
+}
+
+.btnPrimary {
+  background-color: #23A6F0;
+  color: #fff;
+}
+
+.btnSecondary {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
