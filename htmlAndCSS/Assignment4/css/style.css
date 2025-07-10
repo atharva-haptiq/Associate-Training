@@ -22,16 +22,28 @@ body{
   width: 100%;
   z-index: 10;
   background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.header .container{
-    display: flex;
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  /* gap: 30px; */
 }
+
 .leftHeaderSection{
     display: flex;
-    padding-left: 45px;
+    align-items: center;
+    justify-content: space-between;
+    /* padding-left: 45px; */
     padding-top: 17px;
     padding-bottom: 16px;
+    margin: 0 auto;
 }
+
+
 .logo{
     padding: 13px 42px 13px 0;
 
@@ -455,11 +467,17 @@ body{
 }
 
 .projectCard {
-  position: relative;
-  width: 100%;
-  max-width: 331px;
-  overflow: hidden;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 14.58%, rgba(56, 56, 56, 0.84) 100%);
+    position: relative;
+    width: 100%;
+    max-width: 331px;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 14.58%, rgba(56, 56, 56, 0.84) 100%);
+}
+.projectCardImage{
+    width: 331px;
+    height: 452px;
+    position: relative;
+
 }
 
 .projectCard img {
@@ -467,8 +485,11 @@ body{
   object-fit: cover;
   height: 100%;
   display: block;
-
-
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 .projectCardContent {
   position: absolute;
@@ -535,6 +556,7 @@ body{
     margin-bottom: 10px;
 }
 
+
 .industryReviewsHeader p{
     font-weight: 500;
     font-size: 14px;
@@ -542,3 +564,29 @@ body{
     letter-spacing: 0.2px;
     color: #FFFFFF;
 }
+
+/* Hamburger hidden by default */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+/* responsive changes */
+
+.brandRow{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    }
+
+    .headerMobileIcons{
+        display: none;
+    }
+    
+    
+    

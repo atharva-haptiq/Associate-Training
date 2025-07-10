@@ -5,14 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insurance</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/tabletMedia.css">
 </head>
 <body>
     <header class="header">
-        <div class="container">
+        <div class="container headerContent">
             <div class="leftHeaderSection">
+                <div class="brandRow">
             <div class="logo">
                 <a href="#">BrandName</a>
             </div>
+            <div class="headerMobileIcons">
+                <img src="images/icn search .icn-xs.svg" alt="searchIcon" class="navIcon">
+                <img src="images/card.svg" alt="searchIcon" class="navIcon">
+                <img src="images/hamburger.svg" alt="searchIcon" class="navIcon">
+            </div>
+            </div>
+
             <nav class="navbar">
             <ul>
                 <li><a href="#">Home</a></li>
@@ -30,6 +40,7 @@
                     <img src="images/icn arrow-right .icn-xs.svg" alt="rightArrow">
                 </div>
             </div>
+        </div>
         </div>
     </header>
 
@@ -86,7 +97,7 @@
         <div class="container">
             <div class="industryReviews">
                 <div class="industryReviewsHeader">
-                <h2>Industry</h2>
+                <h2>What Clients Say</h2>
                 <p>Problems trying to resolve the conflict between <br>the two major realms of Classical physics: Newtonian mechanics </p>
             </div>
                 <div class="reviewCards">
@@ -141,12 +152,12 @@
         <div class="container">
             <div class="industryProjectsHeader">
                 <div class="industryReviewsHeader">
-                <h2>Industry</h2>
+                <h2>We Are Optimists Who Love To Work Toghether</h2>
                 <p>Problems trying to resolve the conflict between <br>the two major realms of Classical physics: Newtonian mechanics </p>
             </div>
             <div class="projectCards">
                 <div class="projectCard">
-                    <img src="images/i1.png" alt="i1">
+                    <div class="projectCardImage"><img src="images/i1.png" alt="i1"></div>
                     <div class="projectCardContent">
                         <h6>Tax Management</h6>
                         <p>Life Tips From Top Ten Adventure Travelers</p>
@@ -156,7 +167,18 @@
                     </div>
                 </div>
                 <div class="projectCard">
-                    <img src="images/i2.png" alt="i1">
+                    <div class="projectCardImage"><img src="images/i2.png" alt="i1"></div>
+                    <div class="projectCardContent">
+                        <h6>Tax Management</h6>
+                        <p>Life Tips From Top Ten Adventure Travelers</p>
+                        <div class="viewProjectButton">
+                            <a href="#">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="projectCard">
+                    <div class="projectCardImage"><img src="images/i3.jpg" alt="i1"></div>
                     <div class="projectCardContent">
                         <h6>Tax Management</h6>
                         <p>Life Tips From Top Ten Adventure Travelers</p>
@@ -166,17 +188,7 @@
                     </div>
                 </div>
                 <div class="projectCard">
-                    <img src="images/i3.jpg" alt="i1">
-                    <div class="projectCardContent">
-                        <h6>Tax Management</h6>
-                        <p>Life Tips From Top Ten Adventure Travelers</p>
-                        <div class="viewProjectButton">
-                            <a href="#">View Project</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="projectCard">
-                    <img src="images/i4.png" alt="i1">
+                    <div class="projectCardImage"><img src="images/i4.png" alt="i1"></div>
                     <div class="projectCardContent">
                         <h6>Tax Management</h6>
                         <p>Life Tips From Top Ten Adventure Travelers</p>
@@ -266,4 +278,11 @@
         </div>
     </footer>
 </body>
+<script>
+  function toggleMenu() {
+    const menu = document.querySelector('.headerMobileIcons');
+    menu.classList.toggle('active');
+  }
+</script>
+
 </html>
