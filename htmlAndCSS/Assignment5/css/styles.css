@@ -8,14 +8,19 @@
 .container{
     max-width: 1200px;
     margin: auto;
+    padding: 0 20px;
     /* background-color: blue; */
 }
-.header .container{
+.header{
     display: flex;
     justify-content: space-between;
-    padding: 27px 60px 26px 20px;
+    padding: 27px 60px 26px 60px;
     /* margin-bottom: 140px; */
 
+}
+
+.menuiconimg{
+    display: none;
 }
 
 .navbar ul{
@@ -74,20 +79,6 @@
   color: #ffffff;
 
 }
-/* .bannerImage {
-    width: 243px;
-    height: 243px;
-    flex-shrink: 0;
-}
-
-.bannerImage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: -12px 12px 0 0 #EDF7FA;
-    display: block;
-} */
 
 .bannerImage {
   width: 243px;
@@ -214,24 +205,24 @@
     /* margin-left: 146px; */
 }
 
-
-.featuredWorksSection{
-    display: block;   
-    /* margin-right: 148px; */
-}
-.featuredWork{
+.featuredWorksSection ul li{
     display: flex;
-    align-items: flex-start;
+    padding-bottom: 32px;
+    padding-top: 41px;
+    border-bottom: 1px solid #E0E0E0;
     gap:18px;
+    /* align-items: flex-start; */
 }
 .featuredWorkImage{
-    width: auto;
+    width: 250px;
     height: 180px;
+    overflow: hidden;
+    flex-shrink: 0;
 }
 .featuredWorksSection img{
-    /* width: 246px; */
+    width: 100%;
     height: 100%;
-    overflow: hidden;
+    object-fit: cover ;
     /* margin-left: 146px; */
     border-radius: 6px;
 }
@@ -295,7 +286,8 @@
     /* background-color: aqua; */
     display: flex;
     gap: 35px;
-    padding-left: 459px;
+    justify-content: center;
+    /* padding-left: 459px; */
 }
 
 .footerIcons i {
@@ -307,18 +299,19 @@
 
 .footerIcons i:hover {
     color:#D92231;
-;
 }
 
 
-.copyright{
-    padding-left: 464px;
+.footer .container h3{
+    /* padding-left: 464px; */
+    display: flex;
     font-weight: 400;
     font-size: 14px;
     line-height: 100%;
     letter-spacing: 0px;
     color: #21243D;
-    margin-bottom: 50px; /* added just for visibility */
+    justify-content: center;
+    margin-bottom: 50px; 
 }
 
 
@@ -330,4 +323,140 @@
   margin-top: 35px;
   /* margin-right: 148px; */
   margin-bottom: 35px;
+}
+
+
+
+
+@media (max-width: 768px){
+
+    .navbar ul{
+        display: none;
+    }
+    .menuiconimg{
+        display: inline;
+        /* font-size: 24px; */
+        cursor: pointer;
+    }
+    .bannerLeftContent h1{
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0px;
+    margin-bottom: 21px;
+    }
+
+    .bannerLeftContent p{
+    line-height: 100%;
+    margin-bottom: 27px;
+    }
+
+    .bannerLeftContent{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .bannerContent{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .bannerContent{
+    gap: 34px;
+    }
+
+    .postsSectionHeader h2{
+        text-align: center;
+    }
+    .postsSectionHeader a{
+        display: none;
+    }
+    .postCards{
+        display: flex;
+        flex-direction: column;
+        gap: 27px;
+        margin-left: 11px;  
+        margin-right: 10px;  
+    }
+    .postCard h3{
+    font-weight: 700;
+    font-size: 22px;
+    color: #21243D;
+    /* line-height: 100%; */
+    margin-bottom: 12px;
+    }
+    .recentPostsSection h2{
+    margin-left: 0px;
+    }
+
+    .postsSectionHeader{
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .featuredWorks{
+        text-align: center;
+    }
+
+    .featuredWorksSection ul li{
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        flex-direction: column;
+    }
+
+    .featuredWorkRightContent a{
+    /* background-color: aqua; */
+    font-weight: 700px;
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 16px;
+    }
+
+    .featuredWorkImage{
+    width: 100%;
+    /* height: 230px; */
+    }
+
+    .workContent h3{
+    /* margin-top: 16px; */
+    font-size: 16px;
+    font-weight: 900;
+    padding: 0px 12px 0px 12px;
+    }   
+    .workContent{
+        margin-bottom: 25px;
+    }
+
+    .content h4{
+    /* background-color: aqua; */
+    font-size: 14px;
+
+    }
+
+   
+    .footer{
+        padding: 51px 72px 54px 71px;
+    }
+
+    .footerIcons{
+    /* background-color: aqua; */
+    display: flex;
+    gap: 35px;
+    padding-left: 0px;
+    }
+
+    .copyright{
+    padding-left: 0px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    color: #21243D;
+    margin-bottom: 50px; /* added just for visibility */
+}
+
+
 }
