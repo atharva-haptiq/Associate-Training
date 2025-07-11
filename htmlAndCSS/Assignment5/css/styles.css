@@ -5,63 +5,46 @@
     box-sizing: border-box;
 }
 
-.header{
-    /* margin: 0 auto; */
-    /* width: 1200px; */
+.container{
+    max-width: 1200px;
+    margin: auto;
+    /* background-color: blue; */
+}
+.header .container{
     display: flex;
-    gap: 524px;
-    
+    justify-content: space-between;
+    padding: 27px 60px 26px 20px;
+    /* margin-bottom: 140px; */
+
 }
 
-.header a{
+.navbar ul{
+    list-style: none;
+    display: flex;
+    gap: 33px;
+}
+
+.header a {
     text-decoration: none;
     font-weight: 500;
     font-size: 20px;
     line-height: 100%;
     letter-spacing: 0px;
-    color: rgba(0,0,1);
-    padding-top: 27px;
-    /* margin-left: 80px; */
-    margin-bottom: 140px;
-    
+    color: #000000;
 }
 
-.header .logo{
-    margin-left: 80px
-}
-
-.main{
+.bannerContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 110px;
+    margin-top: 140px;
+    /* margin-left: 148px; */
+    /* margin-right: 149px; */
     margin-bottom: 71px;
 }
 
-.navbar{
-    padding-top: 27px;
-    padding-right: 60px;
-}
-
-.navbar ul{
-    display: flex;
-    gap: 33px;
-    list-style: none;
-}
-
-.container{
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.mainSection{
-    display: flex;
-    justify-content: space-between;
-}
-
-
-.leftContent{
-    margin-left: 148px;
-    
-}
-
-.leftContent h1{
+.bannerLeftContent h1{
     font-size: 44px;
     font-weight: 700;
     line-height: 60px;
@@ -69,7 +52,7 @@
     margin-bottom: 40px;
 }
 
-.leftContent p{
+.bannerLeftContent p{
     /* background-color: aqua; */
     font-size: 16px;
     font-weight: 400;
@@ -79,48 +62,72 @@
     color: #21243D;
 }
 
-.leftContent a {
+.bannerLeftContent a {
   background-color: #FF6464;
+  border-radius: 2px;
   font-size: 20px;
-  line-height: 1;
-  height: 50px;
+  line-height: 100%;
   font-weight: 500;
-  letter-spacing: 0;
-  padding: 17px 20px;
+  letter-spacing: 0px;
+  padding: 16px 20px;
   text-decoration: none;
   color: #ffffff;
 
 }
-
-.leftContent a:hover {
-  background-color: #e05050;
-  box-shadow: 0 6px 14px rgba(255, 100, 100, 0.4);
-}
-
-.image {
-    text-align: right;
+/* .bannerImage {
     width: 243px;
     height: 243px;
-    margin-right: 149px;
+    flex-shrink: 0;
 }
 
-.image img {
+.bannerImage img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
     box-shadow: -12px 12px 0 0 #EDF7FA;
-; /* Rounded shadow like a border */
     display: block;
+} */
+
+.bannerImage {
+  width: 243px;
+  height: 243px;
+  flex-shrink: 0;
+  position: relative;
 }
 
+/* This is the fake "shadow" circle */
+.bannerImageWrapper {
+  background-color: #EDF7FA;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* Don't move the wrapper */
+}
 
-.secondary{
+/* Offset the image "forward" (opposite to shadow direction) */
+.bannerImageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  top: -12px;
+  left: 12px;
+}
+
+.recentPostsSection{
     background-color: #EDF7FA;
     padding-bottom: 40px;
+    align-items: center;
 }
 
-.secondary-header{
+.postsSectionHeader{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -128,38 +135,38 @@
     
 }
 
-.secondary .recentPosts{
+.recentPostsSection h2{
     font-weight: 400;
     font-size: 22px;
     line-height: 60px;
     letter-spacing: 0px;
-    margin-left: 148px;
+    /* margin-left: 148px; */
     text-decoration: none;
     margin-top: 7px;
 }
 
 
-.secondary a{
+.recentPostsSection a{
     font-weight: 400;
     font-size: 16px;
     line-height: 100%;
     letter-spacing: 0px;
     text-decoration: none;
-    margin-left: 148px;
-    margin-right: 148px;
+    /* margin-left: 148px; */
+    /* margin-right: 148px; */
     margin-top: 27px;
 }
 
-.cards {
+.postCards {
   display: flex;
   gap: 32px;
   flex: 1;
-  margin-left: 148px;  
-  margin-right: 148px;
+  /* margin-left: 148px;  
+  margin-right: 148px; */
   
 }
 
-.card {
+.postCard {
   background: white;
   padding: 20px;
   border-radius: 8px;
@@ -167,7 +174,7 @@
 }
 
 
-.card h3{
+.postCard h3{
     font-weight: 700;
     font-size: 26px;
     color: #21243D;
@@ -175,28 +182,27 @@
     margin-bottom: 17px;
 }
 
-.internalSections{
+.postCardInternalSections{
     display: flex;
     gap: 12px;
     margin-bottom: 22px
 }
 
-.internalSections p{
+.postCardInternalSections p{
     font-weight: 400;
     font-size: 18px;
     color: #21243D;
-    line-height: 22px; /*changed bcz original seemed to be bit incorrect*/
+    line-height: 100%; 
     letter-spacing: 0px;
 }
 
-.description{
+.postCardDescription{
     font-weight: 400;
     font-size: 16px;
     line-height: 25px;  /*changed bcz original seemed to be bit incorrect*/
     letter-spacing: 0px;
     color: #21243D;
 }
-
 .featuredWorks h2{
     /* background-color: #21243D; */
     font-weight: 400;
@@ -205,38 +211,40 @@
     line-height: 60px;
     letter-spacing: 0px;
     margin-top: 15px;
-    margin-left: 146px;
+    /* margin-left: 146px; */
 }
 
 
-.worksSection{
+.featuredWorksSection{
     display: block;   
-    margin-right: 148px;
+    /* margin-right: 148px; */
 }
-.work{
+.featuredWork{
     display: flex;
     align-items: flex-start;
     gap:18px;
 }
-.workImage{
+.featuredWorkImage{
     width: auto;
     height: 180px;
 }
-.worksSection img{
+.featuredWorksSection img{
     /* width: 246px; */
     height: 100%;
     overflow: hidden;
-    margin-left: 146px;
+    /* margin-left: 146px; */
     border-radius: 6px;
 }
 
-.content{
+.workContent{
     display: flex;
     gap: 26px;
     margin-bottom: 17px;
+    align-items: center;
+    margin-top: 20px;
 }
 
-.rightContent a{
+.featuredWorkRightContent a{
     /* background-color: aqua; */
     font-weight: 700px;
     font-size: 30px;
@@ -244,21 +252,21 @@
     letter-spacing: 0px;
     text-decoration: none;
     color: #21243D;
-    /* margin-bottom: 16px; */
+    margin-bottom: 20px;
 }
-.content .year{
-    margin-top: 16px;
+.workContent h3{
+    /* margin-top: 16px; */
     font-size: 18px;
     font-weight: 900;
     /* line-height: 60px; */
     letter-spacing: 0px;
     background-color: #142850;
-    padding: 8px 15px;
+    padding: 4px 10px;
     border-radius: 27px;
     color: #ffffff; 
 }
 
-.content .contentType{
+.content h4{
     /* background-color: aqua; */
     font-size: 20px;
     font-weight: 400;
@@ -266,6 +274,7 @@
     letter-spacing: 0px;
     color:#8695A4;
     margin-top: 26px;
+    align-items: center;
 }
 
 .contentInfo{
@@ -277,15 +286,6 @@
     
 }
 
-.line {
-  height: 1px;
-  background-color: #E0E0E0;
-  border: none;
-  margin-left: 146px;
-  margin-top: 35px;
-  /* margin-right: 148px; */
-  margin-bottom: 35px;
-}
 
 .footer{
     padding-top: 51px;
@@ -321,3 +321,13 @@
     margin-bottom: 50px; /* added just for visibility */
 }
 
+
+.line {
+  height: 1px;
+  background-color: #E0E0E0;
+  border: none;
+  margin-left: 146px;
+  margin-top: 35px;
+  /* margin-right: 148px; */
+  margin-bottom: 35px;
+}
