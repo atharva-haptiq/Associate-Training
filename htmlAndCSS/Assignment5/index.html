@@ -14,7 +14,7 @@
     <header class="header">
         <!-- <div class="container"> -->
         <a href="#">John.</a>
-        <nav class="navbar">
+        <nav class="navbar" id="navbar">
             <ul>
                 <li><a href="#">Works</a></li>
                 <li><a href="#">Blog</a></li>
@@ -22,10 +22,11 @@
             </ul>
 
             <!-- Menu -->
-             <div class="menuiconimg">
-                <img src="images/menu.svg" alt="icons">
-             </div>
-        </nav>
+             <!-- <a href="#"></a> -->
+            </nav>
+            <div class="menuIconImg">
+               <img src="images/menu.svg" alt="icons" id="menuToggle">
+            </div>
         <!-- </div> -->
     </header>
 
@@ -159,5 +160,14 @@
     <h3>Copyright ©2020 All rights reserved </h3>
 </div>
 </footer>
+<script>
+  const menuToggle = document.getElementById("menuToggle");
+  const navbar = document.getElementById("navbar");
+
+  menuToggle.addEventListener("click", function () {
+    navbar.classList.toggle("show");
+  });
+</script>
 </body>
+
 </html>

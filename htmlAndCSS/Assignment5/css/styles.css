@@ -19,7 +19,7 @@
 
 }
 
-.menuiconimg{
+.menuIconImg{
     display: none;
 }
 
@@ -330,10 +330,10 @@
 
 @media (max-width: 768px){
 
-    .navbar ul{
+    .navbar{
         display: none;
     }
-    .menuiconimg{
+    .menuIconImg{
         display: inline;
         /* font-size: 24px; */
         cursor: pointer;
@@ -456,6 +456,14 @@
     letter-spacing: 0px;
     color: #21243D;
     margin-bottom: 50px; /* added just for visibility */
+    }
+
+.navbar.show {
+    display: block;
+}
+.navbar ul{
+    display: flex;
+    flex-direction: column;
 }
 
 
