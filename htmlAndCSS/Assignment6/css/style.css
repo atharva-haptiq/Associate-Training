@@ -1,0 +1,520 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    max-width: 1212px;
+    padding: 0 12px;
+    margin: auto;
+}
+
+.header{
+    background-color: #74C69D;
+    padding-top: 35px;
+    padding-bottom: 40px;
+}
+
+
+.logo{
+    display: flex;
+    gap: 18px;
+}
+
+.menuBar{
+    display: none;
+}
+.logo a{
+    font-family: "Work Sans", sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 125%;
+    letter-spacing: 0px;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.header .container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar ul{
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    padding: 12.5px 0px;
+    
+}
+
+.navbar ul li a{
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 125%;
+    letter-spacing: 0px;
+    text-decoration: none;
+    color: #FFFFFF;
+    
+}
+
+.banner{
+    background-color: #74C69D;
+    
+}
+
+.banner .container{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 82.87px;
+    /* gap: 120px; */
+}
+
+.bannerLeftContent{
+    padding: 39.57px 0px;
+    
+}
+
+.bannerLeftContent h2{
+    font-family: "Work Sans", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+}
+
+.bannerLeftContent h1{
+    font-family: "Crimson Text", serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 125%;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+}
+
+.bannerLeftContent p{
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;        font-size: 40px;
+
+    font-size: 15px;
+    line-height: 125%;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    margin-bottom: 25px;
+}
+
+.bannerLeftContent a{
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 125%;
+    color: #000000;
+    padding: 11.5px 48px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+
+}
+
+.bannerImg{
+    /* aspect-ratio: 16 / 9; */
+    width: 100%;
+    max-width: 644.28px;
+    height: 378.13px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.bannerImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.partnersDisplaySection .container{
+    text-align: center;
+    padding: 60px;
+}
+
+.partnersDisplaySection h3{
+    font-family: "Work Sans", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #74C69D;
+    margin-bottom: 16px;
+}
+
+.partnersDisplaySection h2{
+    font-family: "Crimson Text", serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 125%;
+    letter-spacing: 0px;
+    color: #000000;
+    margin-bottom: 16px;
+}
+
+.partnersDisplaySection p{
+    font-family: "Work Sans",sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 125%;
+    color: #000000;
+    margin-bottom: 55px;
+}
+
+.partnersDisplaySection a{
+    font-family: "Work Sans",sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 125%;
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: #212529;
+    padding: 11.5px 29.5px;
+    border-radius: 5px;
+    display: inline-block;.banner .container{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 82.87px;
+    /* gap: 120px; */
+}
+
+
+}
+
+.partnerDisplays{
+    padding: 2.5px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 55px;
+    gap: 40px 10px;
+}
+
+.infoSection .container{
+    padding-top: 13px;
+}
+
+.websiteInfoSection{
+    display: flex;
+    gap: 110px;
+    margin-bottom: 73.57px;
+}
+
+.websiteInfoImage{
+    width: 100%;
+    max-width: 599.999755859375px;
+    height: 431.4319763183594px;
+    flex-shrink: 0;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    
+}
+
+.websiteInfoImage img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.websiteInfo{
+    padding: 88.22px 0px;
+}
+
+.websiteInfo h2{
+    font-family: "Crimson Text", serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 125%;
+    color: #212529;
+    margin-bottom: 16px;
+}
+
+.websiteInfo p{
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 125%;
+    color: #21252980;
+    margin-bottom: 16px;
+}
+
+.websiteInfo a{
+    font-family: "Work Sans",sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 125%;
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: #212529;
+    padding: 11.5px 29.5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.websiteInfoSection.reverse {
+  flex-direction: row-reverse;
+}
+
+
+.talentsSection .container{
+    text-align: center;
+    padding-top: 28.7px;
+    padding-bottom: 54px;
+
+}
+
+.talentsSection h3{
+    font-family: "Work Sans", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #74C69D;
+    margin-bottom: 16px;
+}
+
+.talentsSection h2{
+    font-family: "Crimson Text", serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 125%;
+    color: #212529;
+    margin-bottom: 16px;
+}
+
+
+.talentsSection p{
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 125%;
+    color: #000000;
+    margin-bottom: 45px;
+}
+
+.talentCards ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 47px;
+    justify-content:center;
+    margin-bottom: 45px;
+}
+
+.talentCards ul li {
+    text-align: left;
+    padding: 19.5px 25px;
+    box-shadow: 3px 4px 12px 1px rgba(0, 0, 0, 0.25);
+
+}
+
+.talentCardImg{
+    padding: 0px 13.5px;
+    margin-bottom: 19px;
+
+}
+
+.talentCards h4{
+    font-family: "Crimson Text",serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 125%;
+    color: #212529;
+    margin-bottom: 17px;
+}
+
+.talentCards h5{
+    font-family: "Work Sans",sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 125%;
+    color: rgba(33, 37, 41, 0.75);
+}
+
+.talentsSection a{
+    font-family: "Work Sans",sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 125%;
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: #212529;
+    padding: 11.5px 29.5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+
+.footer{
+    background-color: #74C69D;
+    padding: 0px 20px;
+}
+
+
+.footer .container{
+    padding: 50px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerIcons{
+    display: flex;
+    gap: 20px;
+}
+
+
+.footer h4{
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 125%;
+    color: #FFFFFF;
+}
+
+
+/* ---------------------------------------for >992--------------------------------------------------- */
+
+
+@media (max-width:992px){
+    .container{
+        max-width: 100%;
+        /* background-color: #000000; */
+    }
+
+    .header{
+        background-color: #74C69D;
+        padding-top: 17px;
+        padding-bottom: 0px;
+    }
+
+    .logo a{
+        font-size: 30px;
+    }
+
+    .logoImg{
+        max-width: 45px;
+        max-height: 31.06px;
+        display: flex;
+        align-items: center;
+    }
+
+    .logoImg img{
+        width: 100%;
+        height: 100%;
+    }
+    .navbar{
+        display: none;
+    }
+
+    .menuBar {
+        display: flex;              
+        align-items: center;      
+    }
+
+    .banner .container{
+        display: flex;
+        flex-direction: column-reverse;
+        /* align-items: center; */
+        padding-bottom: 40.39px;
+        padding-top: 32px;
+    }
+
+    .bannerImg{
+        width: 100%;
+        max-width: 335px;
+        height: 196px;
+        flex-shrink: 0;
+        overflow: hidden;
+    }
+
+    .bannerLeftContent{
+        padding: 30px 0px;
+        /* display: block;
+        align-items: center; */
+    }
+
+    .bannerLeftContent h1{
+        font-size: 28px;
+    }
+
+    .partnersDisplaySection h2{
+        font-size: 24px;
+    }
+
+    .websiteInfoSection{
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .websiteInfo{
+        padding: 30px 0px;
+    }
+
+    .websiteInfoImage{
+        max-width: 335px;
+        max-height: 240.88px;
+    }
+
+    .websiteInfoImage img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .websiteInfo h2{
+        font-size: 28px;
+    }
+
+    .websiteInfoSection.websiteInfoSection.reverse{
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        margin-bottom: 0px;
+    }
+
+    .talentsSection .container{
+        padding-top: 0px;
+        padding-bottom: 30px;
+    }
+    .talentsSection h2{
+        font-family: "Crimson Text", serif;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 125%;
+        color: #212529;
+        margin-bottom: 16px;
+    }
+
+    .talentCards ul{
+        gap: 30px;
+        margin-bottom: 44px;
+    }
+
+    .footer .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+    }
+
+
+
+
+
+}
+
