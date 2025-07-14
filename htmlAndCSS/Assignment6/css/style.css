@@ -144,11 +144,12 @@
     padding: 60px 0px;
 }
 
-.partnerLogoWrapper img{
+/* .partnerLogoWrapper img{
     width: 100%;
     height: auto;
+    object-fit: contain;
 
-}
+} */
 .partnersDisplaySection h3{
     font-family: "Work Sans", sans-serif;
     font-weight: 700;
@@ -540,5 +541,10 @@
 
     .websiteInfo{
         text-align: left;
+    }
+
+    .partnerDisplays{
+        display: flex;
+        flex-direction: column  ;
     }
 }
