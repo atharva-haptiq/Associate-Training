@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.customHeader{
+    background-color: #74C69D;
+    padding-top: 35px;
+    padding-bottom: 40px;
+        font-family: "Work Sans", sans-serif;
+
+}
+.body{
+    font-family: "Work Sans", sans-serif;
+}
+
+.banner{
+    background-color: #74C69D;
+    font-family: "Work Sans", sans-serif;
+}
+
+.banner{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 82.87px;
+    /* gap: 120px; */
+}
+
+.bannerLeftContent h2{
+    font-family: "Work Sans", sans-serif;
+    letter-spacing: 5px;
+    color: #FFFFFF;
+}
+
+.bannerLeftContent h1{
+    font-family: "Crimson Text", serif;
+    line-height: 125%;
+}
+
+.bannerLeftContent p{
+    font-family: "Work Sans", sans-serif;
+    font-size: 15px;
+}
+
+.bannerLeftContent a{
+    font-family: "Work Sans", sans-serif;
+    line-height: 125%;
+    padding: 11.5px 48px;
+    font-size: 20px;
+}
+
+.bannerImg{
+        max-width: 644.28px;
+    height: 378.13px;
+}
+
+
+.partnersDisplaySection .container{
+    padding: 60px 0px;
+}
+
+.partnersDisplaySection h3{
+    font-family: "Work Sans", sans-serif;
+    line-height: 125%;
+    color: #74C69D;
+    letter-spacing: 5px;
+}
+
+.partnersDisplaySection h2{
+    font-family: "Crimson Text", serif;
+    line-height: 125%;
+}
+
+.partnersDisplaySection p{
+    font-family: "Work Sans",sans-serif;
+    font-size: 20px;
+    line-height: 125%;
+    margin-bottom: 55px;
+}
+
+.partnersDisplaySection a{
+    font-family: "Work Sans",sans-serif;
+    font-size: 20px;
+    line-height: 125%;
+    background-color: #212529;
+    padding: 11.5px 29.5px;
+}
+
+.partnerDisplays{
+    padding: 2.5px 0px;
+    margin-bottom: 55px;
+    gap: 40px 10px;
+}
+
+.infoSection .container{
+    padding-top: 13px;
+}
+
+
+.websiteInfoSection{
+    gap: 110px;
+    margin-bottom: 73.57px;
+}
