@@ -69,8 +69,16 @@ public class StudentService {
         System.out.println(student.getStudentName()+"'s average marks is "+studentsAverage);
         System.out.println("----------------------------------------");
 
-//        marks.clear();
+        marks.clear();
+         studentsAverage = 0;
+         studentPercentage = 0;
+         obtainedMarks = 0;
 
+
+    }
+
+    public List<Student> getAllStudents() {
+        return students;
     }
 
 

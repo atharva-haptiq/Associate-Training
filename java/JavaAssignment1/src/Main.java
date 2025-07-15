@@ -1,3 +1,4 @@
+import studentReports.ReportUtil;
 import studentReports.Student;
 import studentReports.StudentService;
 
@@ -12,15 +13,22 @@ public class Main {
         int choice = -1;
 
         while (choice != 4) {
-            System.out.println("\n===== Student Report Menu =====");
+            System.out.println("\n-----------------------Student Report Menu-----------------------");
             System.out.println("1. Add Student");
             System.out.println("2. Enter Marks");
             System.out.println("3. Calculate Result");
             System.out.println("4. Exit");
+            System.out.println("5. Save Report");
             System.out.print("Enter your choice: ");
 
-            choice = scanner.nextInt();
-            scanner.nextLine();
+            try {
+                choice = scanner.nextInt();
+                scanner.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input! Please enter a number (1–5).");
+                scanner.nextLine();
+                choice = -1;
+            }
 
             switch (choice) {
                 case 1:
@@ -73,6 +81,12 @@ public class Main {
 
                 case 4:
                     System.out.println("Exiting...");
+                    break;
+
+                case 5:
+                    System.out.print("Enter filename to save as text (e.g., report.txt): ");
+                    String textFile = scanner.nextLine();
+                    ReportUtil.saveReportAsText(studentService.getAllStudents(), textFile);
                     break;
 
                 default:
