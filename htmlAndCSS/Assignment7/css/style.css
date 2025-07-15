@@ -26,6 +26,8 @@
     font-family: "Work Sans", sans-serif;
 }
 
+
+
 .banner{
     display: flex;
     justify-content: space-between;
@@ -62,7 +64,7 @@
 }
 
 
-.partnersDisplaySection .container{
+.partnersDisplaySection .container-xl{
     padding: 60px 0px;
 }
 
@@ -130,6 +132,11 @@
   padding: 11.5px 29.5px;
 }
 
+.talentsSection .container-xl{
+    text-align: center;
+    padding-top: 28.7px;
+    padding-bottom: 54px;
+}
 .talentsSection h3 {
     font-family: "Work Sans", sans-serif;
     font-weight: 700;
@@ -159,17 +166,17 @@
     margin-bottom: 45px;
 }
 
-.talentCardInfo {
-    /* background: white; */
-}
 .talentCardInfo{
     box-shadow: 3px 4px 12px 1px rgba(0, 0, 0, 0.25);
-    
-    
-    
 }
+
 .talentCardImg {
+    padding: 0px 13.5px;
     margin-bottom: 19px;
+}
+.cardList{
+    gap: 47px;
+
 }
 
 .talentCardInfo h4 {
