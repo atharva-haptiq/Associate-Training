@@ -5,6 +5,7 @@ import studentReports.StudentService;
 import java.util.*;
 
 public class Main {
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -85,16 +86,25 @@ public class Main {
                 case 5:
                     System.out.print("Enter filename to save as text (e.g., report.txt): ");
                     String textFile = scanner.nextLine();
-                    System.out.print("Enter name of student: ");
-                    String student = scanner.nextLine();
-                    ReportUtil.saveReportAsText(studentService.getStudentByName(student), textFile);
+
+                    System.out.print("Enter student name: ");
+                    String studentNameForReport = scanner.nextLine();
+                    Student studentForReport = studentService.getStudentByName(studentNameForReport);
+
+                    if (studentForReport == null) {
+                        System.out.println("Student not found!");
+                        break;
+                    }
+
+                    ReportUtil.saveReportAsText(studentForReport, textFile);
                     break;
 
-                default: System.out.println("Invalid choice. Please try again.");
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
             }
         }
 
         scanner.close();
     }
-
 }

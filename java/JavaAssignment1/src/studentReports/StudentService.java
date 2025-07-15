@@ -46,6 +46,7 @@ public class StudentService {
         for(Map.Entry<String, Integer> mark : marks.entrySet()){
             obtainedMarks+=mark.getValue();
         }
+
         System.out.println("----------------------------------------");
         System.out.println("Total obtained Marks is: "+obtainedMarks);
         System.out.println("----------------------------------------");
@@ -55,10 +56,12 @@ public class StudentService {
         System.out.println("----------------------------------------");
 
         if(studentPercentage >= 35){
+            student.setPassStatus(true);
             System.out.println(student.getStudentName()+" has passed with "+studentPercentage+"%");
             System.out.println("----------------------------------------");
         }
         else {
+            student.setPassStatus(false);
             System.out.println(student.getStudentName()+" has failed with "+studentPercentage+"%");
             System.out.println("----------------------------------------");
         }
@@ -68,7 +71,9 @@ public class StudentService {
         System.out.println(student.getStudentName()+"'s average marks is "+studentsAverage);
         System.out.println("----------------------------------------");
 
-        marks.clear();
+        student.setPercentage(studentPercentage);
+        student.setAverageMarks(studentsAverage);
+//        marks.clear();
          studentsAverage = 0;
          studentPercentage = 0;
          obtainedMarks = 0;
