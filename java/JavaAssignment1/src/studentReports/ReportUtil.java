@@ -8,33 +8,25 @@ import java.util.Map;
 
 public class ReportUtil {
 
-    public static void saveReportAsText(List<Student> students, String filename) {
+
+    public static void saveReportAsText(Student student, String filename) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
-            for (Student student : students) {
-                writer.println("Student Name: " + student.getStudentName());
-                writer.println("Marks:");
-                int total = 0;
-                for (Map.Entry<String, Integer> entry : student.getSubjectMarks().entrySet()) {
-                    writer.println("  " + entry.getKey() + ": " + entry.getValue());
-                    total += entry.getValue();
-                }
+            writer.println("Student Name: " + student.getStudentName());
+            writer.println("Marks:");
 
-                int subjects = student.getSubjectMarks().size();
-                double percentage = subjects == 0 ? 0 : (double) total / (subjects * 100) * 100;
-                int average = subjects == 0 ? 0 : total / subjects;
-
-                writer.println("Total Marks: " + total);
-                writer.println("Average: " + average);
-                writer.println("Percentage: " + percentage + "%");
-                writer.println("Result: " + (percentage >= 35 ? "PASS" : "FAIL"));
-                writer.println("-------------------------------------");
+            // Writing subject marks
+            Map<String, Integer> marks = student.getSubjectMarks();
+            for (Map.Entry<String, Integer> entry : marks.entrySet()) {
+                writer.println("  " + entry.getKey() + ": " + entry.getValue());
             }
 
+            // Optionally, you can calculate the total, average, and percentage if required
             System.out.println("Report saved as text to " + filename);
         } catch (IOException e) {
             System.out.println("Error saving report: " + e.getMessage());
         }
     }
+
 }
 
 

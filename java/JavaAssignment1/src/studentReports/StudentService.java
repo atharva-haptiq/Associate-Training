@@ -6,7 +6,6 @@ public class StudentService {
 
     Integer studentsAverage = 0;
     double studentPercentage = 0;
-    String studentsResultStatus = null;
     Integer obtainedMarks = 0;
     Integer totalMarks = 400;
 
@@ -76,11 +75,6 @@ public class StudentService {
 
 
     }
-
-    public List<Student> getAllStudents() {
-        return students;
-    }
-
 
 
 
