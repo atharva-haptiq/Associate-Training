@@ -10,46 +10,65 @@
 </head>
 <body>
     <header class="customHeader">
-        <div class="container-xl d-flex justify-content-between align-items-center">
+  <div class="container-xl d-flex justify-content-between align-items-center">
+    
+    <div class="d-flex align-items-center gap-2">
+      <div class="logoImg">
+        <img src="images/Group 1.svg" alt="logoImg" class="img-fluid">
+      </div>
+      <a href="index.html" class="fw-medium fs-1 text-decoration-none text-white logoText">Start</a>
+    </div>
 
-            <div class=" d-flex align-items-center ">
-                    <img src="images/Group 1.svg" alt="logoImg">
-                  <a href="index.html" class="fw-bold fs-1 ms-2 text-decoration-none text-white">Start</a>
-                </div>
+    <nav class="d-none d-lg-block">
+      <ul class="nav list-unstyled gap-4 m-0 p-0">
+        <li class="nav-item">
+          <a class="nav-link text-white fs-5 p-0" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white fs-5 p-0" href="#">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white fs-5 p-0" href="services.html">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white fs-5 p-0" href="#">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="d-lg-none menuBar">
+      <img src="images/menubar.svg" alt="menu" class="img-fluid">
+    </div>
+
+  </div>
+</header>
 
 
-            <nav class="d-none d-lg-block">
-                <ul class="nav list-unstyled gap-4">
-                    <li class="nav-item"><a class="nav-links text-white text-decoration-none fs-5" href="#">Home</a></li>
-                    <li  class="nav-item"><a class="nav-links text-white text-decoration-none fs-5 " href="#" >Portfolio</a></li>
-                    <li  class="nav-item"><a class="nav-links text-white text-decoration-none fs-5" href="services.html" >Services</a></li>
-                    <li  class="nav-item"><a class="nav-links text-white text-decoration-none fs-5" href="#">Contact</a></li>
-                </ul>
-            </nav>
 
-            <div class="d-lg-none">
-                <img src="./images/menubar.svg" />
-            </div>
-        </div>
-    </header>
+   <main class="banner py-5">
+  <div class="container-xl d-flex flex-column-reverse flex-lg-row align-items-center gap-4">
+    
+    <div class="bannerLeftContent col-12 col-lg-5">
+      <h2 class="fs-4 text-white mb-3">WELCOME</h2>
+      <h1 class="fw-bold fs-1 mb-3 text-white">Lorem ipsum dolor sit amet consectetur</h1>
+      <p class="fw-normal text-white lh-sm mb-4">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit nemo hic quos, ab, dolor aperiam nobis cum est eos error ipsum, voluptate culpa nesciunt delectus iste?
+      </p>
+      <a href="#" class="text-black text-decoration-none bg-white fw-normal d-inline-block rounded px-4 py-2">Explore</a>
+    </div>
+
+    <div class="bannerImg col-12 col-lg-7">
+      <img src="images/Group.png" alt="banner image" class="img-fluid w-100 h-auto">
+    </div>
+
+  </div>
+</main>
 
 
-    <main class="banner">
-        <div class="container-xl d-flex fw-bold fs-6 ;lh-base">
-            <div class="bannerLeftContent col-md-7 d-block align-content-center">
-                <h2 class="fs-4 text-white mb-3">WELCOME</h2>
-                <h1 class="fw-bold fs-1 mb-3 text-white">Lorem ipsum dolor sit amet consectetur </h1>
-                <p class="fw-normal text-white lh-sm mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit nemo hic quos, ab, dolor aperiam nobis cum est eos error ipsum, voluptate culpa nesciunt delectus iste?</p>
-                <a href="#" class="text-black text-decoration-none bg-white fw-normal d-inline-block rounded">Explore</a>
-            </div>
-            <div class="bannerImg  col-md-5 flex-shrink-0 overflow-hidden">
-                <img src="images/Group.png" alt="" class="w-100 h-100 object-fit-contain">
-            </div>
-        </div>
-    </main>
+
 
     <section class="partnersDisplaySection">
-        <div class="container text-center">
+        <div class="container-xl text-center">
             <h3 class="fw-bold text-uppercase mb-3">Partners</h3>
             <h2 class="fw-bold fs-1 text-black mb-3">Lorem Ipsum Dolor</h2>
             <p class="fw-normal text-black">Lorem ipsum, dolor sit amet consectetur <br>adipisicing elit.</p>
@@ -65,10 +84,10 @@
         </div>
     </section>
 
-    <!-- website info sections -->
-    <section class="infoSection">
-    <div class="container-xl pt-3">
-            <div class="websiteInfoSection d-flex">
+    <!-- <section class="infoSection">
+        
+    <div class="container">
+            <div class="websiteInfoSection">
             <div class="websiteInfoImage">
                 <img src="images/Group (1).png" alt="Group">
             </div>
@@ -80,7 +99,7 @@
         </div>
         </div>
         <div class="container">
-            <div class="websiteInfoSection reverse d-flex flex-row-reverse">
+            <div class="websiteInfoSection reverse">
             <div class="websiteInfoImage">
                 <img src="images/Group (2).png" alt="Group">
             </div>
@@ -91,7 +110,112 @@
             </div>
         </div>
         </div>
-    </section>
+    </section> -->
+
+    <section class="infoSection py-3">
+  <div class="container-xl">
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6 text-center">
+        <div class="websiteInfoImage overflow-hidden">
+          <img src="images/Group (1).png" alt="Group" class="img-fluid w-100 h-100 object-fit-contain">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="websiteInfo">
+          <h2 class="fw-bold mb-3">Lorem ipsum dolor sit amet consectetur</h2>
+          <p class="fw-medium mb-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit nemo hic quos, ab, dolor aperiam nobis cum est eos error ipsum, voluptate culpa nesciunt delectus iste?</p>
+          <a href="#" class="customBtn fw-medium text-white rounded d-inline-block">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-xl">
+    <div class="row align-items-center flex-lg-row-reverse mb-5">
+      <div class="col-lg-6 text-center">
+        <div class="websiteInfoImage overflow-hidden">
+          <img src="images/Group (2).png" alt="Group" class="img-fluid w-100 h-100 object-fit-contain">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="websiteInfo">
+          <h2 class="fw-bold mb-3">Lorem ipsum dolor sit amet consectetur</h2>
+          <p class="fw-medium mb-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit nemo hic quos, ab, dolor aperiam nobis cum est eos error ipsum, voluptate culpa nesciunt delectus iste?</p>
+          <a href="#" class="customBtn fw-medium text-white rounded d-inline-block">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="talentsSection py-4">
+  <div class="container-xl text-center">
+    <h3>team</h3>
+    <h2>Our Talents</h2>
+    <p>Lorem ipsum, dolor sit amet consectetur Suscipit nemo hic quos, ab,</p>
+
+    <div class="row justify-content-center gy-4 mb-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="talentCardInfo bg-white text-start p-3">
+          <div class="talentCardImg d-flex justify-content-center align-items-center mb-3">
+            <img src="images/Group 14.svg" alt="" class="align-middle img-fluid">
+          </div>
+          <h4>Peg Legge</h4>
+          <h5>CEO</h5>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="talentCardInfo bg-white text-start p-3">
+          <div class="talentCardImg d-flex justify-content-center align-items-center mb-3">
+            <img src="images/Group 15 (2).svg" alt="" class="img-fluid">
+          </div>
+          <h4>Richard Guerra</h4>
+          <h5>CTO</h5>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="talentCardInfo bg-white text-start p-3">
+          <div class="talentCardImg d-flex justify-content-center align-items-center mb-3">
+            <img src="images/Group 15.svg" alt="" class="img-fluid">
+          </div>
+          <h4>Alexandra Stolz</h4>
+          <h5 class="fw-normal">DESIGNER</h5>
+        </div>
+      </div>
+      <div class="talentCardShadow col-md-6 col-lg-3">
+        <div class="talentCardInfo bg-white text-start p-3">
+          <div class="talentCardImg d-flex justify-content-center align-items-center mb-3">
+            <img src="images/Group 15 (1).svg" alt="" class="img-fluid">
+          </div>
+          <h4>Janet Bray</h4>
+          <h5>DEVELOPER</h5>
+        </div>
+      </div>
+    </div>
+
+    <a href="#" class="customBtn fw-medium text-white rounded d-inline-block">View Team</a>
+  </div>
+</section>
+
+<footer class="footer bg-success px-3">
+  <div class="container-xl py-5 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+
+    <div class="footerIcons d-flex gap-3 flex-wrap justify-content-center">
+      <div><a href="#"><img src="images/Group 33.svg" alt=""></a></div>
+      <div><a href="#"><img src="images/Group 34.svg" alt=""></a></div>
+      <div><a href="#"><img src="images/Group 35.svg" alt=""></a></div>
+      <div><a href="#"><img src="images/Group 36.svg" alt=""></a></div>
+      <div><a href="#"><img src="images/Group 37.svg" alt=""></a></div>
+      <div><a href="#"><img src="images/Group 38.svg" alt=""></a></div>
+      <div><a href="#"><img src="images/Group 39.svg" alt=""></a></div>
+    </div>
+
+    <h4 class="copyright text-white m-0 fs-5">© Start, 2022. All rights reserved.</h4>
+
+  </div>
+</footer>
+
+
 
 </body>
 </html>
