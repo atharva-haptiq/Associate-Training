@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3060ab6f-2d1c-401d-a4df-5e7c7fb5dcd2" name="Changes" comment="Assignment 1 done&#10;optimization to be done">
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/HRDA/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/HRDA/src/hrda/model/Department.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/HRDA/src/hrda/repository/DBConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/HRDA/src/hrda/repository/DbOperations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/HRDA/src/hrda/service/EmployeeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/HRDA/src/hrda/serviceImpls/DepartmentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/HRDA/src/hrda/serviceImpls/EmployeeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaAssignment2/HRDA/HRDA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaAssignment2/HRDA/HRDA.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaAssignment2/HRDA/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaAssignment2/HRDA/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaAssignment2/HRDA/src/hrda/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaAssignment2/HRDA/src/hrda/model/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaAssignment2/HRDA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaAssignment2/HRDA/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../learnit_java_core" beforeDir="false" afterPath="$PROJECT_DIR$/../learnit_java_core" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
