@@ -8,14 +8,12 @@ import hrda.serviceImpls.EmployeeServiceImpl;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
-        Stream stream;
         DBConnection dbConnection = new DBConnection();
         DepartmentService departmentService = new DepartmentService(dbConnection);
         EmployeeService employeeService = new EmployeeServiceImpl(dbConnection,departmentService);
