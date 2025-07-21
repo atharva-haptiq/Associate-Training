@@ -65,9 +65,10 @@ public class Main {
                         System.out.println("Enter the department name you want to group accordingly");
                         departmentName = scanner.nextLine();
                         employeeList = employeeService.getAllEmployee();
+                        String finalDepartmentName = departmentName;
                         employeeList
                                 .stream()
-                                .filter(employee -> employee.getDepartment().getDepartment().equals(departmentName))
+                                .filter(employee -> employee.getDepartment().getDepartment().equals(finalDepartmentName))
                                 .forEach(employee -> {
                                     System.out.println("------------Employee's Info------------------");
                                     System.out.println("Employee name: "+employee.getEmployeeName());
@@ -88,8 +89,30 @@ public class Main {
                     case 5:
                         System.out.println("Sorting employees by experience and salary...");
                         System.out.println("");
+                        System.out.println("");
                         break;
                     case 6:
+                        System.out.println("Adding an empoloyee...");
+                        System.out.println("Enter an employee name you want to add");
+                        String employeeName = scanner.nextLine();
+                        System.out.println("Enter employee's department");
+                        departmentName = scanner.nextLine();
+                        System.out.println("Enter employee's salary");
+                        Double employeeSalary = scanner.nextDouble();
+                        System.out.println("Enter Employee's Experience in years");
+                        Integer experience = scanner.nextInt();
+
+                        if(employeeService.addEmployee(employeeName, departmentName, employeeSalary, experience)) System.out.println("Employee has been added successfully!");
+                        else System.out.println("Employee failed to add");
+                        break;
+                    case 7:
+                        System.out.println("Adding deprtment...");
+                        System.out.println("Enter the department's name you want to add");
+                        departmentName = scanner.nextLine();
+                        if(departmentService.addDepartment(departmentName)) System.out.println("Department has been added successfully!");
+                        else System.out.println("Department failed to add");
+                        break;
+                    case 8:
                         System.out.println("Exiting...");
                         System.exit(0);
                         break;
@@ -99,7 +122,7 @@ public class Main {
 
             } else {
                 System.out.println("Please enter a valid number.");
-                scanner.nextLine(); // Clear invalid input
+                scanner.nextLine();
             }
 
             System.out.println("\nPress Enter to continue...");
@@ -116,7 +139,9 @@ public class Main {
         System.out.println("3. Group employees by department");
         System.out.println("4. Show average salary per department");
         System.out.println("5. Sort employees by experience and salary");
-        System.out.println("6. Exit");
+        System.out.println("6. Add an Employee");
+        System.out.println("7. Add a Department");
+        System.out.println("8. Exit");
         System.out.println("------------------------------------------");
     }
 
