@@ -1,4 +1,4 @@
-package model;
+package entity;
 
 import java.util.Objects;
 
@@ -32,10 +32,10 @@ public class User implements Comparable<User> {
         return username.equalsIgnoreCase(user.username);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(username.toLowerCase());
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(username.toLowerCase());
+//    }
 
     @Override
     public String toString() {
