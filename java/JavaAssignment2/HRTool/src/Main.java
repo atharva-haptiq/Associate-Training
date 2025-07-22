@@ -86,8 +86,22 @@ public class Main {
                         break;
                     case 5:
                         System.out.println("Sorting employees by experience and salary...");
-                        System.out.println("");
-                        System.out.println("");
+                        System.out.println("Enter the minimum experience of employee: ");
+                        Integer minExp = scanner.nextInt();
+                        System.out.println("Enter a minimum salary you want to sort for:");
+                        Double minSalary = scanner.nextDouble();
+                        employeeList = employeeService.getAllEmployee();
+                        employeeList
+                                .stream()
+                                .filter(employee -> employee.getSalary() >= minSalary && employee.getExperienceYears()>= minExp )
+                                .forEach(employee -> {
+                                    System.out.println("------------Employee's Info------------------");
+                                    System.out.println("Employee name: "+employee.getEmployeeName());
+                                    System.out.println("Employee's department: "+employee.getDepartment().getDepartment());
+                                    System.out.println("Employee's salary: "+employee.getSalary());
+                                    System.out.println("Employee's experience in years: "+employee.getExperienceYears());
+                                    System.out.println("-------------------------------");
+                                });
                         break;
                     case 6:
                         System.out.println("Adding an empoloyee...");
