@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3060ab6f-2d1c-401d-a4df-5e7c7fb5dcd2" name="Changes" comment="Assignment 1 done&#10;optimization to be done">
-      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/ChatSimulatorApp/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/ChatSimulatorApp/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/ChatSimulatorApp/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/ChatSimulatorApp/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/ChatSimulatorApp/ChatSimulatorApp.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/ChatSimulatorApp/src/generics/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/ChatSimulatorApp/src/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/ChatSimulatorApp/src/service/ChatService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/ChatSimulatorApp/src/service/ClientHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/ChatSimulatorApp/src/sockets/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavaAssignment2/ChatSimulatorApp/src/sockets/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="3060ab6f-2d1c-401d-a4df-5e7c7fb5dcd2" name="Changes" comment="Readme file added">
       <change beforePath="$PROJECT_DIR$/../learnit_java_core" beforeDir="false" afterPath="$PROJECT_DIR$/../learnit_java_core" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +20,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../.." value="atharva-haptiq" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -68,7 +60,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "atharva-haptiq",
+    "git-widget-placeholder": "main",
     "onboarding.tips.debug.path": "/home/atharvakakade/Associate-Training/java/JavaAssignment1/src/Main.java",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
@@ -159,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752602009132</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Readme file added">
+      <option name="closed" value="true" />
+      <created>1753165362370</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1753165362370</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -167,6 +167,7 @@
     <MESSAGE value="assignment 1 started changes pending" />
     <MESSAGE value="Assignment 1 done minor changes pending" />
     <MESSAGE value="Assignment 1 done&#10;optimization to be done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Assignment 1 done&#10;optimization to be done" />
+    <MESSAGE value="Readme file added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Readme file added" />
   </component>
 </project>
