@@ -63,7 +63,7 @@ public class Main {
                     } else {
                         System.out.println("Messages received:");
                         for (Message<String> msg : messages) {
-                            System.out.println("From " + msg.getSender().getUsername() + ": " + msg.getContent());
+                            System.out.println("From " + msg.getSender().getUsername() + ": " + "time: "+msg.getTimestamp()+" :" + msg.getContent());
                         }
                     }
                     break;
