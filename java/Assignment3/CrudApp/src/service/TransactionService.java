@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TransactionService {
     String addTransaction(Transaction transaction);
-    List<Transaction> getAllTransactions();
+    List<Transaction> getAllTransactions(int limit, int offset);
     Transaction getTransaction(Integer transactionID);
     List<Transaction> getTransactionsByCategory(String categoryName);
     List<Transaction> getTransactionsByProduct(String productName);

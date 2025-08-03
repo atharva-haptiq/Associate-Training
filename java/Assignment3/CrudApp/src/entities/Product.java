@@ -20,6 +20,13 @@ public class Product {
         this.stock = stock;
     }
 
+    public Product(String name, BigDecimal price, Integer stock, Category category) {
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+        this.category = category;
+    }
+
     public Integer getId() {
         return id;
     }

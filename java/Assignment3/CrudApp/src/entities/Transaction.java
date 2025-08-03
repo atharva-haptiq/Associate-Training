@@ -24,6 +24,14 @@ public class Transaction {
         this.localDateTime = localDateTime;
     }
 
+
+    public Transaction(Product product, Integer qty, Type type, LocalDateTime now) {
+        this.product = product;
+        this.quantity = qty;
+        this.type = type;
+        this.localDateTime = now;
+    }
+
     public Integer getId() {
         return id;
     }

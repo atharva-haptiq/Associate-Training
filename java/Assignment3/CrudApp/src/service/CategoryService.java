@@ -7,7 +7,7 @@ import java.util.List;
 public interface CategoryService {
 
     String addCategory(Category category);
-    List<Category> getAllCategories();
+    List<Category> getAllCategories(int limit , int offset);
     Category getCategoryById(Integer categoryId);
     Category getCategoryByName(String categoryName);
     String updateCategory(Category category);

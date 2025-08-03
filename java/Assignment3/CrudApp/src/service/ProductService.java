@@ -10,9 +10,9 @@ public interface ProductService {
     List<Product> getAllProducts(int limit, int offset);
     Product getProductByName(String name);
     Product getProductById(Integer id);
-    List<Product> getLowStockProducts();
+    List<Product> getLowStockProducts(int limit, int offset);
     String updateProduct(Product product);
     String deleteProduct(Integer productId);
-    String reduceStock(Integer productId);
+    String reduceStock(Integer productId, Integer quantity);
     String updateStock(Integer productId, Integer quantity);
 }
