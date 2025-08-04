@@ -54,7 +54,7 @@ public class BlogServiceImpl implements BlogService{
         blog.setAuthor(user);
         Blog savedBlog = blogRepository.save(blog);
         if (savedBlog == null) return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        else return ResponseEntity.ok("Blog added succesfully");
+        else return ResponseEntity.ok("Blog updated succesfully");
     }
 
     @Override

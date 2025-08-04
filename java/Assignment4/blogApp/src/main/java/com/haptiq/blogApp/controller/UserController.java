@@ -21,12 +21,14 @@ public class UserController {
     }
 
     @GetMapping("/byId")
-    public ResponseEntity<ApiResponse<?>> getUserByID(@RequestParam  Long userId){
+    public ResponseEntity<ApiResponse<?>> getUserByID(@RequestParam Long userId){
         return ResponseEntity.ok(userService.getUserByID(userId));
     }
 
-//    @GetMapping("/byName")
-//    public ResponseEntity<ApiResponse<?>>
+    @GetMapping("/byName")
+    public ResponseEntity<ApiResponse<?>> getUserByUsername(@RequestParam String userName){
+        return ResponseEntity.ok(userService.getUserByUsername(userName));
+    }
 
 }
 
