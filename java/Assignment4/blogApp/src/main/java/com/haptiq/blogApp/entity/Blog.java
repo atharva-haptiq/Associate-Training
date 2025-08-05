@@ -1,5 +1,8 @@
 package com.haptiq.blogApp.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -24,9 +27,11 @@ public class Blog {
     private String description;
     @Column(nullable = false)
     private String content;
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "author_id")
     private User author;
+    @JsonManagedReference
     @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
     private boolean published;

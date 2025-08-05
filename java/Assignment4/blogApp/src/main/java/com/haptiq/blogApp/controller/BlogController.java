@@ -40,8 +40,10 @@ public class BlogController {
     }
 
     @GetMapping("/byAuthor")
-    public ResponseEntity<?> getBlogByAuthor(@RequestParam Long authorID){
-        return blogService.getBlogByAuthor(authorID);
+    public ResponseEntity<?> getBlogByAuthor(@RequestParam Long authorID,
+                                             @RequestParam (required = false, defaultValue = "0") int pageNumber,
+                                             @RequestParam (required = false, defaultValue = "10") int pageSize){
+        return blogService.getBlogByAuthor(authorID,pageNumber,pageSize);
     }
 
 

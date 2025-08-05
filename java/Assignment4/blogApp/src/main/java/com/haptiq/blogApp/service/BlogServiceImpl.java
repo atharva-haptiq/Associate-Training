@@ -7,11 +7,16 @@ import com.haptiq.blogApp.entity.User;
 import com.haptiq.blogApp.repository.BlogRepository;
 import com.haptiq.blogApp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BlogServiceImpl implements BlogService{
@@ -80,11 +85,16 @@ public class BlogServiceImpl implements BlogService{
     }
 
     @Override
-    public ResponseEntity<?> getBlogByAuthor(Long authorID) {
+    public ResponseEntity<?> getBlogByAuthor(Long authorID, int pageNumber, int pageSize) {
         User author = userRepository.findById(authorID).orElse(null);
         if (author ==null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        List<Blog> blogList = blogRepository.findByAuthor(author);
-        if (blogList.isEmpty()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        return ResponseEntity.ok(blogList);
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
+        Page<Blog> blogPage = blogRepository.findByAuthor(author, pageRequest);
+        Map<String, Object> response = new HashMap<>();
+        response.put("Content: ", blogPage.getContent());
+        response.put("Total elements: ",blogPage.getTotalElements());
+        response.put("hasNext: ",blogPage.hasNext());
+        if (response.isEmpty()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return ResponseEntity.ok(response);
     }
 }

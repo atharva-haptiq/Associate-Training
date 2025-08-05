@@ -1,5 +1,6 @@
 package com.haptiq.blogApp.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.haptiq.blogApp.enums.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -34,6 +35,7 @@ public class User {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+    @JsonManagedReference
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Blog> blogList;
 

@@ -10,5 +10,5 @@ public interface BlogService {
     ResponseEntity<?> deleteBlog(Long id);
     ResponseEntity<?> getBlogById(Long id);
     ResponseEntity<?> getAllBlogs();
-    ResponseEntity<?> getBlogByAuthor(Long authorID);
+    ResponseEntity<?> getBlogByAuthor(Long authorID, int pageNumber, int pageSize);
 }
