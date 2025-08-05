@@ -9,6 +9,6 @@ public interface BlogService {
     ResponseEntity<?> updateBlog(BlogDTO blogDTO, Long id);
     ResponseEntity<?> deleteBlog(Long id);
     ResponseEntity<?> getBlogById(Long id);
-    ResponseEntity<?> getAllBlogs();
+    ResponseEntity<?> getAllBlogs(int pageNumber, int pageSize);
     ResponseEntity<?> getBlogByAuthor(Long authorID, int pageNumber, int pageSize);
 }

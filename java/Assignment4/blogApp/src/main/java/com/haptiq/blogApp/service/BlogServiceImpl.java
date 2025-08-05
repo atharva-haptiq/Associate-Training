@@ -78,10 +78,15 @@ public class BlogServiceImpl implements BlogService{
     }
 
     @Override
-    public ResponseEntity<?> getAllBlogs() {
-        List<Blog> blogList = blogRepository.findAll();
-        if (blogList == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        return ResponseEntity.ok(blogList);
+    public ResponseEntity<?> getAllBlogs(int pageNumber, int pageSize) {
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
+        Page<Blog> blogPage = blogRepository.findAll (pageRequest);
+        Map<String, Object> response = new HashMap<>();
+        response.put("Content: ", blogPage.getContent());
+        response.put("Total elements: ",blogPage.getTotalElements());
+        response.put("hasNext: ",blogPage.hasNext());
+        if (response.isEmpty()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return ResponseEntity.ok(response);
     }
 
     @Override

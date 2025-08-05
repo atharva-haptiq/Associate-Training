@@ -7,10 +7,14 @@ import com.haptiq.blogApp.repository.BlogRepository;
 import com.haptiq.blogApp.repository.CommentRepository;
 import com.haptiq.blogApp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -49,20 +53,32 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public ResponseEntity<?> getCommentsByBlog(Long blogID) {
+    public ResponseEntity<?> getCommentsByBlog(Long blogID,int pageNumber, int pageSize) {
         Blog blog = blogRepository.findById(blogID).orElse(null);
         if (blog == null) return ResponseEntity.notFound().build();
-        List<Comment> comments = commentRepository.findByBlog(blog);
-        if (comments.isEmpty()) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(comments);
+        PageRequest pageRequest = PageRequest.of(pageNumber,pageSize);
+        Page<Comment> commentPage = commentRepository.findByBlog(blog,pageRequest);
+        Map<String, Object> response = new HashMap<>();
+        response.put("content: ", commentPage.getContent());
+        response.put("total elemnets: ", commentPage.getTotalElements());
+        response.put("hasNext: ", commentPage.hasNext());
+
+        if (response.isEmpty()) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(response);
     }
 
     @Override
-    public ResponseEntity<?> getCommentByUser(Long userID) {
+    public ResponseEntity<?> getCommentByUser(Long userID,int pageNumber, int pageSize) {
         User user = userRepository.findById(userID).orElse(null);
         if (user == null) return ResponseEntity.notFound().build();
-        List<Comment> comments = commentRepository.findByUser(user);
-        if (comments.isEmpty()) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(comments);
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
+        Page<Comment> commentPage = commentRepository.findByUser(user, pageRequest);
+        Map<String, Object> response = new HashMap<>();
+        response.put("content: ", commentPage.getContent());
+        response.put("total elemnets: ", commentPage.getTotalElements());
+        response.put("hasNext: ", commentPage.hasNext());
+
+        if (response.isEmpty()) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(response);
     }
 }

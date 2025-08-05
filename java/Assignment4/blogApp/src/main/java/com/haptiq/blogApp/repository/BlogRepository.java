@@ -15,5 +15,6 @@ public interface BlogRepository extends JpaRepository<Blog, Long> {
 
     Optional<Blog> findById(Long id);
     Page<Blog> findByAuthor(User author, Pageable pageable);
+    Page<Blog> findAll(Pageable pageable);
 
 }

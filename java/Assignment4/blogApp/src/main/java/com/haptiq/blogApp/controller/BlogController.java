@@ -35,8 +35,9 @@ public class BlogController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<?> getAllBlogs(){
-        return blogService.getAllBlogs();
+    public ResponseEntity<?> getAllBlogs(@RequestParam (required = false, defaultValue = "0") int pageNumber,
+                                         @RequestParam (required = false, defaultValue = "10") int pageSize){
+        return blogService.getAllBlogs(pageNumber,pageSize);
     }
 
     @GetMapping("/byAuthor")

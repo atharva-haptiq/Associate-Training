@@ -22,13 +22,17 @@ public class CommentController {
         return commentService.deleteComment(commentID);
     }
     @GetMapping("/byBlog")
-    public ResponseEntity<?> getCommentsByBlog(Long blogID){
-        return commentService.getCommentsByBlog(blogID);
+    public ResponseEntity<?> getCommentsByBlog(Long blogID,
+                                               @RequestParam (required = false, defaultValue = "0") int pageNumber,
+                                               @RequestParam (required = false, defaultValue = "10") int pageSize){
+        return commentService.getCommentsByBlog(blogID,pageNumber,pageSize);
     }
 
     @GetMapping("/byUser")
-    public ResponseEntity<?> getCommentByUser(Long userID){
-        return commentService.getCommentByUser(userID);
+    public ResponseEntity<?> getCommentByUser(Long userID,
+                                              @RequestParam (required = false, defaultValue = "0") int pageNumber,
+                                              @RequestParam (required = false, defaultValue = "10") int pageSize){
+        return commentService.getCommentByUser(userID,pageNumber,pageSize);
     }
 }
 
