@@ -1,20 +1,20 @@
 package com.haptiq.secureBlogApp.service;
 
-
 import com.haptiq.secureBlogApp.entity.Blog;
 import com.haptiq.secureBlogApp.entity.Comment;
 import com.haptiq.secureBlogApp.entity.User;
+import com.haptiq.secureBlogApp.globalResponse.ApiResponse;
 import com.haptiq.secureBlogApp.repository.BlogRepository;
 import com.haptiq.secureBlogApp.repository.CommentRepository;
 import com.haptiq.secureBlogApp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service
@@ -33,53 +33,60 @@ public class CommentServiceImpl implements CommentService {
     public ResponseEntity<?> addComment(Long userID, String comment, Long blogID) {
         User user = userRepository.findById(userID).orElse(null);
         Blog blog = blogRepository.findById(blogID).orElse(null);
-        if (blog == null || user == null) return ResponseEntity.notFound().build();
+        if (blog == null || user == null) {
+            return new ResponseEntity<>(new ApiResponse<>(false, HttpStatus.NOT_FOUND, "User or Blog not found", null), HttpStatus.NOT_FOUND);
+        }
 
         Comment commentObj = new Comment();
         commentObj.setBlog(blog);
         commentObj.setUser(user);
         commentObj.setComment(comment);
         Comment savedComment = commentRepository.save(commentObj);
-        if (savedComment == null) return ResponseEntity.noContent().build();
-        return ResponseEntity.ok("Comment Added successfully");
 
+        return new ResponseEntity<>(new ApiResponse<>(true, HttpStatus.CREATED, "Comment added successfully", savedComment), HttpStatus.CREATED);
     }
 
     @Override
     public ResponseEntity<?> deleteComment(Long commentID) {
         Comment comment = commentRepository.findById(commentID).orElse(null);
-        if (comment == null) return ResponseEntity.notFound().build();
+        if (comment == null) {
+            return new ResponseEntity<>(new ApiResponse<>(false, HttpStatus.NOT_FOUND, "Comment not found", null), HttpStatus.NOT_FOUND);
+        }
         commentRepository.deleteById(commentID);
-        return ResponseEntity.ok("Comment deleted successfully");
+        return new ResponseEntity<>(new ApiResponse<>(true, HttpStatus.OK, "Comment deleted successfully", null), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<?> getCommentsByBlog(Long blogID,int pageNumber, int pageSize) {
+    public ResponseEntity<?> getCommentsByBlog(Long blogID, int pageNumber, int pageSize) {
         Blog blog = blogRepository.findById(blogID).orElse(null);
-        if (blog == null) return ResponseEntity.notFound().build();
-        PageRequest pageRequest = PageRequest.of(pageNumber,pageSize);
-        Page<Comment> commentPage = commentRepository.findByBlog(blog,pageRequest);
-        Map<String, Object> response = new HashMap<>();
-        response.put("content: ", commentPage.getContent());
-        response.put("total elemnets: ", commentPage.getTotalElements());
-        response.put("hasNext: ", commentPage.hasNext());
+        if (blog == null) {
+            return new ResponseEntity<>(new ApiResponse<>(false, HttpStatus.NOT_FOUND, "Blog not found", null), HttpStatus.NOT_FOUND);
+        }
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
+        Page<Comment> commentPage = commentRepository.findByBlog(blog, pageRequest);
 
-        if (response.isEmpty()) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(response);
+        Map<String, Object> response = new HashMap<>();
+        response.put("content", commentPage.getContent());
+        response.put("totalElements", commentPage.getTotalElements());
+        response.put("hasNext", commentPage.hasNext());
+
+        return new ResponseEntity<>(new ApiResponse<>(true, HttpStatus.OK, "Comments fetched successfully", response), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<?> getCommentByUser(Long userID,int pageNumber, int pageSize) {
+    public ResponseEntity<?> getCommentByUser(Long userID, int pageNumber, int pageSize) {
         User user = userRepository.findById(userID).orElse(null);
-        if (user == null) return ResponseEntity.notFound().build();
+        if (user == null) {
+            return new ResponseEntity<>(new ApiResponse<>(false, HttpStatus.NOT_FOUND, "User not found", null), HttpStatus.NOT_FOUND);
+        }
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
         Page<Comment> commentPage = commentRepository.findByUser(user, pageRequest);
-        Map<String, Object> response = new HashMap<>();
-        response.put("content: ", commentPage.getContent());
-        response.put("total elemnets: ", commentPage.getTotalElements());
-        response.put("hasNext: ", commentPage.hasNext());
 
-        if (response.isEmpty()) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(response);
+        Map<String, Object> response = new HashMap<>();
+        response.put("content", commentPage.getContent());
+        response.put("totalElements", commentPage.getTotalElements());
+        response.put("hasNext", commentPage.hasNext());
+
+        return new ResponseEntity<>(new ApiResponse<>(true, HttpStatus.OK, "Comments fetched successfully", response), HttpStatus.OK);
     }
 }

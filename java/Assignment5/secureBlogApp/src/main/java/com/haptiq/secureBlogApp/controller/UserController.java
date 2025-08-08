@@ -3,6 +3,7 @@ package com.haptiq.secureBlogApp.controller;
 import com.haptiq.secureBlogApp.dto.BlogDTO;
 import com.haptiq.secureBlogApp.dto.UserDTO;
 import com.haptiq.secureBlogApp.globalResponse.ApiResponse;
+import com.haptiq.secureBlogApp.security.JwtUtils;
 import com.haptiq.secureBlogApp.service.BlogService;
 import com.haptiq.secureBlogApp.service.CommentService;
 import com.haptiq.secureBlogApp.service.UserService;
@@ -24,25 +25,34 @@ public class UserController {
 
     @Autowired
     private BlogService blogService;
+
+    @Autowired
+    private JwtUtils jwtUtils;
+
+
     @GetMapping("/byId")
-    public ResponseEntity<ApiResponse<?>> getUserByID(@RequestParam Long userId){
-        return ResponseEntity.ok(userService.getUserByID(userId));
+    public ResponseEntity<?> getUserByID(@RequestParam Long userId){
+        return userService.getUserByID(userId);
     }
 
     @GetMapping("/byName")
-    public ResponseEntity<ApiResponse<?>> getUserByUsername(@RequestParam String userName){
-        return ResponseEntity.ok(userService.getUserByUsername(userName));
+    public ResponseEntity<?> getUserByUsername(@RequestParam String userName){
+        return userService.getUserByUsername(userName);
     }
 
     @PostMapping("/addBlog")
     public ResponseEntity<?> createBlog(@RequestHeader ("Authorization") String token,@Valid @RequestBody BlogDTO blogDTO){
         token = token.substring(7);
-        return blogService.createBlog(blogDTO);
+        String email = jwtUtils.extractUsername(token);
+        return blogService.createBlog(blogDTO,email);
     }
 
     @PutMapping("/updateBlog")
-    public ResponseEntity<?> updateBlog(@Valid @RequestBody BlogDTO blogDTO, @RequestParam Long id){
-        return blogService.updateBlog(blogDTO,id);
+    public ResponseEntity<?> updateBlog(@RequestHeader ("Authorization") String token,
+                                        @Valid @RequestBody BlogDTO blogDTO, @RequestParam Long id){
+        token = token.substring(7);
+        String email = jwtUtils.extractUsername(token);
+        return blogService.updateBlog(blogDTO,id,email);
     }
 
     @DeleteMapping("/deleteBlog")

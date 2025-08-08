@@ -53,7 +53,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<ApiResponse<?>> registerUser(@Valid @RequestBody UserDTO userDTO){
-        return ResponseEntity.ok(userService.registerUser(userDTO));
+    public ResponseEntity<?> registerUser(@Valid @RequestBody UserDTO userDTO){
+        return userService.registerUser(userDTO);
     }
 }

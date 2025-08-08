@@ -3,22 +3,21 @@ package com.haptiq.secureBlogApp.service;
 import com.haptiq.secureBlogApp.dto.BlogDTO;
 import com.haptiq.secureBlogApp.entity.Blog;
 import com.haptiq.secureBlogApp.entity.User;
+import com.haptiq.secureBlogApp.globalResponse.ApiResponse;
 import com.haptiq.secureBlogApp.repository.BlogRepository;
 import com.haptiq.secureBlogApp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service
-public class BlogServiceImpl implements BlogService{
+public class BlogServiceImpl implements BlogService {
 
     @Autowired
     private UserService userService;
@@ -30,75 +29,109 @@ public class BlogServiceImpl implements BlogService{
     private BlogRepository blogRepository;
 
     @Override
-    public ResponseEntity<?> createBlog(BlogDTO blogDTO) {
-        User user = userRepository.findByEmail(blogDTO.getAuthorFirstName()).orElse(null);
-        if (user ==null)return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<ApiResponse<?>> createBlog(BlogDTO blogDTO, String email) {
+        User user = userRepository.findByEmail(email).orElse(null);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ApiResponse<>(false, HttpStatus.NOT_FOUND, "User not found", null));
+        }
 
         Blog blog = new Blog();
         blog.setTitle(blogDTO.getTitle());
         blog.setDescription(blogDTO.getDescription());
         blog.setContent(blogDTO.getContent());
         blog.setAuthor(user);
+
         Blog savedBlog = blogRepository.save(blog);
-        if (savedBlog == null) return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        else return ResponseEntity.ok("Blog added succesfully");
+        if (savedBlog == null) {
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                    .body(new ApiResponse<>(false, HttpStatus.NOT_ACCEPTABLE, "Failed to save blog", null));
+        }
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(new ApiResponse<>(true, HttpStatus.CREATED, "Blog added successfully", null));
     }
 
     @Override
-    public ResponseEntity<?> updateBlog(BlogDTO blogDTO, Long id) {
-        User user = userRepository.findByFirstName(blogDTO.getAuthorFirstName()).orElse(null);
-        if (user ==null)return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<ApiResponse<?>> updateBlog(BlogDTO blogDTO, Long id, String email) {
+        User user = userRepository.findByEmail(email).orElse(null);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ApiResponse<>(false, HttpStatus.NOT_FOUND, "User not found", null));
+        }
 
         Blog blog = blogRepository.findById(id).orElse(null);
-        if (blog ==null)return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (blog == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ApiResponse<>(false, HttpStatus.NOT_FOUND, "Blog not found", null));
+        }
 
         blog.setTitle(blogDTO.getTitle());
         blog.setDescription(blogDTO.getDescription());
         blog.setContent(blogDTO.getContent());
         blog.setAuthor(user);
+
         Blog savedBlog = blogRepository.save(blog);
-        if (savedBlog == null) return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        else return ResponseEntity.ok("Blog updated succesfully");
+        if (savedBlog == null) {
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                    .body(new ApiResponse<>(false, HttpStatus.NOT_ACCEPTABLE, "Failed to update blog", null));
+        }
+
+        return ResponseEntity.ok(new ApiResponse<>(true, HttpStatus.OK, "Blog updated successfully", null));
     }
 
     @Override
-    public ResponseEntity<?> deleteBlog(Long id) {
+    public ResponseEntity<ApiResponse<?>> deleteBlog(Long id) {
         Blog blog = blogRepository.findById(id).orElse(null);
-        if (blog == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (blog == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ApiResponse<>(false, HttpStatus.NOT_FOUND, "Blog not found", null));
+        }
+
         blogRepository.deleteById(id);
-        return ResponseEntity.ok("Blog deleted Successfully");
+        return ResponseEntity.ok(new ApiResponse<>(true, HttpStatus.OK, "Blog deleted successfully", null));
     }
 
     @Override
-    public ResponseEntity<?> getBlogById(Long id) {
+    public ResponseEntity<ApiResponse<?>> getBlogById(Long id) {
         Blog blog = blogRepository.findById(id).orElse(null);
-        if (blog == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        return ResponseEntity.ok(blog);
+        if (blog == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ApiResponse<>(false, HttpStatus.NOT_FOUND, "Blog not found", null));
+        }
+
+        return ResponseEntity.ok(new ApiResponse<>(true, HttpStatus.OK, "Blog fetched successfully", blog));
     }
 
     @Override
-    public ResponseEntity<?> getAllBlogs(int pageNumber, int pageSize) {
+    public ResponseEntity<ApiResponse<?>> getAllBlogs(int pageNumber, int pageSize) {
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
-        Page<Blog> blogPage = blogRepository.findAll (pageRequest);
+        Page<Blog> blogPage = blogRepository.findAll(pageRequest);
+
         Map<String, Object> response = new HashMap<>();
-        response.put("Content: ", blogPage.getContent());
-        response.put("Total elements: ",blogPage.getTotalElements());
-        response.put("hasNext: ",blogPage.hasNext());
-        if (response.isEmpty()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        return ResponseEntity.ok(response);
+        response.put("content", blogPage.getContent());
+        response.put("totalElements", blogPage.getTotalElements());
+        response.put("hasNext", blogPage.hasNext());
+
+        return ResponseEntity.ok(new ApiResponse<>(true, HttpStatus.OK, "All blogs fetched successfully", response));
     }
 
     @Override
-    public ResponseEntity<?> getBlogByAuthor(Long authorID, int pageNumber, int pageSize) {
+    public ResponseEntity<ApiResponse<?>> getBlogByAuthor(Long authorID, int pageNumber, int pageSize) {
         User author = userRepository.findById(authorID).orElse(null);
-        if (author ==null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (author == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new ApiResponse<>(false, HttpStatus.NOT_FOUND, "Author not found", null));
+        }
+
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
         Page<Blog> blogPage = blogRepository.findByAuthor(author, pageRequest);
+
         Map<String, Object> response = new HashMap<>();
-        response.put("Content: ", blogPage.getContent());
-        response.put("Total elements: ",blogPage.getTotalElements());
-        response.put("hasNext: ",blogPage.hasNext());
-        if (response.isEmpty()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        return ResponseEntity.ok(response);
+        response.put("content", blogPage.getContent());
+        response.put("totalElements", blogPage.getTotalElements());
+        response.put("hasNext", blogPage.hasNext());
+
+        return ResponseEntity.ok(new ApiResponse<>(true, HttpStatus.OK, "Blogs by author fetched successfully", response));
     }
 }

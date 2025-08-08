@@ -34,7 +34,6 @@ public class JwtUtils {
     private Long EXPIRATION_TIME;
 
     public String extractUsername(String token) {
-
         return extractClaim(token, Claims::getSubject);
     }
 
@@ -47,24 +46,19 @@ public class JwtUtils {
         return claimsResolver.apply(claims);
     }
 
-    // Generating token (add role as claim)
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
-        // Add role claim
         claims.put("role", userDetails.getAuthorities().iterator().next().getAuthority());
         claims.put("username", userDetails.getUsername());
         return createToken(claims, userDetails.getUsername());
     }
 
-    // Create token for setting password (no expiry)
     public String generateSetPasswordToken(User user) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("userId", user.getId()); // assuming you have getId()
+        claims.put("userId", user.getId());
         claims.put("username", user.getUsername());
         claims.put("fullname", user.getFirstName() + " " + user.getLastName());
-        claims.put("purpose", "SET_PASSWORD"); // extra purpose claim (optional)
-
-        // No expiry (or set a very long expiry)
+        claims.put("purpose", "SET_PASSWORD");
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(user.getUsername())
@@ -76,13 +70,11 @@ public class JwtUtils {
     }
 
 
-    // ✅ Validate token
     public boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    // ✅ Internal helpers
     private String createToken(Map<String, Object> claims, String subject) {
         return Jwts.builder()
                 .setClaims(claims)
