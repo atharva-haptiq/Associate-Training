@@ -30,8 +30,8 @@ public class CommentServiceImpl implements CommentService {
     private BlogRepository blogRepository;
 
     @Override
-    public ResponseEntity<?> addComment(Long userID, String comment, Long blogID) {
-        User user = userRepository.findById(userID).orElse(null);
+    public ResponseEntity<?> addComment(String email, String comment, Long blogID) {
+        User user = userRepository.findByEmail(email).orElse(null);
         Blog blog = blogRepository.findById(blogID).orElse(null);
         if (blog == null || user == null) {
             return new ResponseEntity<>(new ApiResponse<>(false, HttpStatus.NOT_FOUND, "User or Blog not found", null), HttpStatus.NOT_FOUND);

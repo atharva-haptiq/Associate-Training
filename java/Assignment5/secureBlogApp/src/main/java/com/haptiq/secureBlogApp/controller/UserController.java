@@ -61,8 +61,12 @@ public class UserController {
     }
 
     @PostMapping("/addComment")
-    public ResponseEntity<?> addComment(@RequestParam Long userID, @RequestParam String comment,@RequestParam Long blogId){
-        return commentService.addComment(userID,comment,blogId);
+    public ResponseEntity<?> addComment( @RequestHeader ("Authorization") String token,
+                                         @RequestParam String comment,
+                                         @RequestParam Long blogId){
+        token = token.substring(7);
+        String email = jwtUtils.extractUsername(token);
+        return commentService.addComment(email,comment,blogId);
     }
 
     @DeleteMapping("/deleteComment")

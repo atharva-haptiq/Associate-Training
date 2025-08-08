@@ -28,10 +28,6 @@ public class SecurityConfig {
 
     private final UserDetailsService userDetailsService;
 
-
-    @Autowired
-    DataSource dataSource;
-
     @Autowired
     JwtFilter jwtFilter;
 

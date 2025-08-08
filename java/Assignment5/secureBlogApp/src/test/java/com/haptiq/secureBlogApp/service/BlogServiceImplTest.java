@@ -1,203 +1,197 @@
-//package com.haptiq.secureBlogApp.service;
-//
-//import com.haptiq.secureBlogApp.dto.BlogDTO;
-//import com.haptiq.secureBlogApp.entity.Blog;
-//import com.haptiq.secureBlogApp.entity.User;
-//import com.haptiq.secureBlogApp.repository.BlogRepository;
-//import com.haptiq.secureBlogApp.repository.UserRepository;
-//import org.junit.jupiter.api.Test;
-//import org.junit.jupiter.api.extension.ExtendWith;
-//import org.mockito.InjectMocks;
-//import org.mockito.Mock;
-//import org.mockito.junit.jupiter.MockitoExtension;
-//import org.springframework.data.domain.*;
-//import org.springframework.http.ResponseEntity;
-//
-//import java.util.*;
-//
-//import static org.junit.jupiter.api.Assertions.*;
-//import static org.mockito.Mockito.*;
-//
-//@ExtendWith(MockitoExtension.class)
-//public class BlogServiceImplTest {
-//
-//    @Mock
-//    private UserRepository userRepository;
-//
-//    @Mock
-//    private BlogRepository blogRepository;
-//
-//    @Mock
-//    private UserService userService;
-//
-//    @InjectMocks
-//    private BlogServiceImpl blogService;
-//
-//    @Test
-//    void createBlog_whenUserExists_thenSuccess() {
-//        BlogDTO dto = new BlogDTO();
-//        dto.setTitle("Title");
-//        dto.setDescription("Desc");
-//        dto.setContent("Content");
-//        dto.setAuthorFirstName("john@example.com");
-//
-//        User user = new User();
-//        user.setFirstName("John");
-//
-//        when(userRepository.findByEmail("john@example.com")).thenReturn(Optional.of(user));
-//        when(blogRepository.save(any(Blog.class))).thenReturn(new Blog());
-//
-//        ResponseEntity<?> response = blogService.createBlog(dto);
-//        assertEquals(201, response.getStatusCodeValue());
-//        assertEquals("Blog added successfully", response.getBody());
-//    }
-//
-//    @Test
-//    void createBlog_whenUserNotFound_then404() {
-//        BlogDTO dto = new BlogDTO();
-//        dto.setAuthorFirstName("unknown@example.com");
-//
-//        when(userRepository.findByEmail("unknown@example.com")).thenReturn(Optional.empty());
-//
-//        ResponseEntity<?> response = blogService.createBlog(dto);
-//        assertEquals(404, response.getStatusCodeValue());
-//        assertEquals("User not found", response.getBody());
-//    }
-//
-//    @Test
-//    void updateBlog_whenSuccess_then200() {
-//        BlogDTO dto = new BlogDTO();
-//        dto.setTitle("Updated Title");
-//        dto.setDescription("Updated Desc");
-//        dto.setContent("Updated Content");
-//        dto.setAuthorFirstName("John");
-//
-//        User user = new User();
-//        user.setFirstName("John");
-//
-//        Blog blog = new Blog();
-//        blog.setId(1L);
-//
-//        when(userRepository.findByFirstName("John")).thenReturn(Optional.of(user));
-//        when(blogRepository.findById(1L)).thenReturn(Optional.of(blog));
-//        when(blogRepository.save(any(Blog.class))).thenReturn(blog);
-//
-//        ResponseEntity<?> response = blogService.updateBlog(dto, 1L);
-//        assertEquals(200, response.getStatusCodeValue());
-//        assertEquals("Blog updated successfully", response.getBody());
-//    }
-//
-//    @Test
-//    void updateBlog_whenUserMissing_then404() {
-//        BlogDTO dto = new BlogDTO();
-//        dto.setAuthorFirstName("Missing");
-//
-//        when(userRepository.findByFirstName("Missing")).thenReturn(Optional.empty());
-//
-//        ResponseEntity<?> response = blogService.updateBlog(dto, 1L);
-//        assertEquals(404, response.getStatusCodeValue());
-//        assertEquals("User not found", response.getBody());
-//    }
-//
-//    @Test
-//    void updateBlog_whenBlogMissing_then404() {
-//        BlogDTO dto = new BlogDTO();
-//        dto.setAuthorFirstName("John");
-//
-//        User user = new User();
-//
-//        when(userRepository.findByFirstName("John")).thenReturn(Optional.of(user));
-//        when(blogRepository.findById(1L)).thenReturn(Optional.empty());
-//
-//        ResponseEntity<?> response = blogService.updateBlog(dto, 1L);
-//        assertEquals(404, response.getStatusCodeValue());
-//        assertEquals("Blog not found", response.getBody());
-//    }
-//
-//    @Test
-//    void deleteBlog_whenExists_then200() {
-//        Blog blog = new Blog();
-//        blog.setId(1L);
-//
-//        when(blogRepository.findById(1L)).thenReturn(Optional.of(blog));
-//
-//        ResponseEntity<?> response = blogService.deleteBlog(1L);
-//        assertEquals(200, response.getStatusCodeValue());
-//        assertEquals("Blog deleted successfully", response.getBody());
-//        verify(blogRepository, times(1)).deleteById(1L);
-//    }
-//
-//    @Test
-//    void deleteBlog_whenNotFound_then404() {
-//        when(blogRepository.findById(1L)).thenReturn(Optional.empty());
-//
-//        ResponseEntity<?> response = blogService.deleteBlog(1L);
-//        assertEquals(404, response.getStatusCodeValue());
-//        assertEquals("Blog not found", response.getBody());
-//    }
-//
-//    @Test
-//    void getBlogById_whenFound_then200() {
-//        Blog blog = new Blog();
-//        blog.setId(1L);
-//
-//        when(blogRepository.findById(1L)).thenReturn(Optional.of(blog));
-//
-//        ResponseEntity<?> response = blogService.getBlogById(1L);
-//        assertEquals(200, response.getStatusCodeValue());
-//        assertSame(blog, response.getBody());
-//    }
-//
-//    @Test
-//    void getBlogById_whenNotFound_then404() {
-//        when(blogRepository.findById(1L)).thenReturn(Optional.empty());
-//
-//        ResponseEntity<?> response = blogService.getBlogById(1L);
-//        assertEquals(404, response.getStatusCodeValue());
-//        assertEquals("Blog not found", response.getBody());
-//    }
-//
-//    @Test
-//    void getAllBlogs_returnsPagedData() {
-//        Blog blog = new Blog();
-//        List<Blog> blogList = List.of(blog);
-//        Page<Blog> page = new PageImpl<>(blogList);
-//
-//        when(blogRepository.findAll(any(PageRequest.class))).thenReturn(page);
-//
-//        ResponseEntity<?> response = blogService.getAllBlogs(0, 10);
-//        assertEquals(200, response.getStatusCodeValue());
-//
-//        Map<?, ?> body = (Map<?, ?>) response.getBody();
-//        assertEquals(blogList, body.get("content"));
-//        assertEquals(1L, body.get("totalElements"));
-//        assertEquals(false, body.get("hasNext"));
-//    }
-//
-//    @Test
-//    void getBlogByAuthor_whenFound_thenReturnPaged() {
-//        User author = new User();
-//        Blog blog = new Blog();
-//        List<Blog> blogs = List.of(blog);
-//        Page<Blog> page = new PageImpl<>(blogs);
-//
-//        when(userRepository.findById(1L)).thenReturn(Optional.of(author));
-//        when(blogRepository.findByAuthor(eq(author), any(PageRequest.class))).thenReturn(page);
-//
-//        ResponseEntity<?> response = blogService.getBlogByAuthor(1L, 0, 5);
-//        assertEquals(200, response.getStatusCodeValue());
-//
-//        Map<?, ?> body = (Map<?, ?>) response.getBody();
-//        assertEquals(blogs, body.get("content"));
-//        assertEquals(1L, body.get("totalElements"));
-//    }
-//
-//    @Test
-//    void getBlogByAuthor_whenUserMissing_then404() {
-//        when(userRepository.findById(1L)).thenReturn(Optional.empty());
-//
-//        ResponseEntity<?> response = blogService.getBlogByAuthor(1L, 0, 5);
-//        assertEquals(404, response.getStatusCodeValue());
-//        assertEquals("Author not found", response.getBody());
-//    }
-//}
+package com.haptiq.secureBlogApp.service;
+
+import com.haptiq.secureBlogApp.dto.BlogDTO;
+import com.haptiq.secureBlogApp.entity.Blog;
+import com.haptiq.secureBlogApp.entity.User;
+import com.haptiq.secureBlogApp.globalResponse.ApiResponse;
+import com.haptiq.secureBlogApp.repository.BlogRepository;
+import com.haptiq.secureBlogApp.repository.UserRepository;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
+public class BlogServiceImplTest {
+
+    @Mock
+    private BlogRepository blogRepository;
+
+    @Mock
+    private UserRepository userRepository;
+
+    @Mock
+    private UserService userService;
+
+    @InjectMocks
+    private BlogServiceImpl blogService;
+
+    private User user;
+    private Blog blog;
+    private BlogDTO blogDTO;
+
+    @BeforeEach
+    void setUp() {
+        user = new User();
+        user.setId(1L);
+        user.setEmail("test@example.com");
+
+        blog = new Blog();
+        blog.setId(1L);
+        blog.setTitle("Sample Title");
+        blog.setDescription("Sample Description");
+        blog.setContent("Sample Content");
+        blog.setAuthor(user);
+
+        blogDTO = new BlogDTO();
+        blogDTO.setTitle("Sample Title");
+        blogDTO.setDescription("Sample Description");
+        blogDTO.setContent("Sample Content");
+    }
+
+    @Test
+    void createBlog_userExists_blogSavedSuccessfully() {
+        when(userRepository.findByEmail("test@example.com")).thenReturn(Optional.of(user));
+        when(blogRepository.save(any(Blog.class))).thenReturn(blog);
+
+        ResponseEntity<ApiResponse<?>> response = blogService.createBlog(blogDTO, "test@example.com");
+
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertTrue(response.getBody().isSuccess());
+        assertEquals("Blog added successfully", response.getBody().getMessage());
+        verify(blogRepository).save(any(Blog.class));
+    }
+
+    @Test
+    void createBlog_userNotFound_returnsNotFound() {
+        when(userRepository.findByEmail("unknown@example.com")).thenReturn(Optional.empty());
+
+        ResponseEntity<ApiResponse<?>> response = blogService.createBlog(blogDTO, "unknown@example.com");
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals("User not found", response.getBody().getMessage());
+    }
+
+    @Test
+    void updateBlog_userAndBlogExist_updatesSuccessfully() {
+        when(userRepository.findByEmail("test@example.com")).thenReturn(Optional.of(user));
+        when(blogRepository.findById(1L)).thenReturn(Optional.of(blog));
+        when(blogRepository.save(any(Blog.class))).thenReturn(blog);
+
+        ResponseEntity<ApiResponse<?>> response = blogService.updateBlog(blogDTO, 1L, "test@example.com");
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("Blog updated successfully", response.getBody().getMessage());
+    }
+
+    @Test
+    void updateBlog_userNotFound_returnsNotFound() {
+        when(userRepository.findByEmail("test@example.com")).thenReturn(Optional.empty());
+
+        ResponseEntity<ApiResponse<?>> response = blogService.updateBlog(blogDTO, 1L, "test@example.com");
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals("User not found", response.getBody().getMessage());
+    }
+
+    @Test
+    void updateBlog_blogNotFound_returnsNotFound() {
+        when(userRepository.findByEmail("test@example.com")).thenReturn(Optional.of(user));
+        when(blogRepository.findById(1L)).thenReturn(Optional.empty());
+
+        ResponseEntity<ApiResponse<?>> response = blogService.updateBlog(blogDTO, 1L, "test@example.com");
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals("Blog not found", response.getBody().getMessage());
+    }
+
+    @Test
+    void deleteBlog_blogExists_deletesSuccessfully() {
+        when(blogRepository.findById(1L)).thenReturn(Optional.of(blog));
+
+        ResponseEntity<ApiResponse<?>> response = blogService.deleteBlog(1L);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("Blog deleted successfully", response.getBody().getMessage());
+        verify(blogRepository).deleteById(1L);
+    }
+
+    @Test
+    void deleteBlog_blogNotFound_returnsNotFound() {
+        when(blogRepository.findById(1L)).thenReturn(Optional.empty());
+
+        ResponseEntity<ApiResponse<?>> response = blogService.deleteBlog(1L);
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals("Blog not found", response.getBody().getMessage());
+    }
+
+    @Test
+    void getBlogById_blogFound_returnsSuccess() {
+        when(blogRepository.findById(1L)).thenReturn(Optional.of(blog));
+
+        ResponseEntity<ApiResponse<?>> response = blogService.getBlogById(1L);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(blog, response.getBody().getData());
+    }
+
+    @Test
+    void getBlogById_blogNotFound_returnsNotFound() {
+        when(blogRepository.findById(1L)).thenReturn(Optional.empty());
+
+        ResponseEntity<ApiResponse<?>> response = blogService.getBlogById(1L);
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals("Blog not found", response.getBody().getMessage());
+    }
+
+    @Test
+    void getAllBlogs_returnsPagedBlogsSuccessfully() {
+        List<Blog> blogs = List.of(blog);
+        Page<Blog> blogPage = new PageImpl<>(blogs);
+
+        when(blogRepository.findAll(PageRequest.of(0, 10))).thenReturn(blogPage);
+
+        ResponseEntity<ApiResponse<?>> response = blogService.getAllBlogs(0, 10);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertTrue(((Map<?, ?>) response.getBody().getData()).containsKey("content"));
+    }
+
+    @Test
+    void getBlogByAuthor_authorExists_returnsPagedBlogs() {
+        List<Blog> blogs = List.of(blog);
+        Page<Blog> blogPage = new PageImpl<>(blogs);
+
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(blogRepository.findByAuthor(user, PageRequest.of(0, 10))).thenReturn(blogPage);
+
+        ResponseEntity<ApiResponse<?>> response = blogService.getBlogByAuthor(1L, 0, 10);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("Blogs by author fetched successfully", response.getBody().getMessage());
+    }
+
+    @Test
+    void getBlogByAuthor_authorNotFound_returnsNotFound() {
+        when(userRepository.findById(1L)).thenReturn(Optional.empty());
+
+        ResponseEntity<ApiResponse<?>> response = blogService.getBlogByAuthor(1L, 0, 10);
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals("Author not found", response.getBody().getMessage());
+    }
+}
