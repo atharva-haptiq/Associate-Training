@@ -1,3 +1,5 @@
+package Assignment2.chatSimulator.src;
+
 import generics.Message;
 import entity.User;
 import service.UserService;
