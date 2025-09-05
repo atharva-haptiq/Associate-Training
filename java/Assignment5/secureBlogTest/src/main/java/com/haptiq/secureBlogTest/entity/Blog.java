@@ -23,8 +23,10 @@ public class Blog {
 
     @Column(nullable = false)
     private String title;
+    private String thumbnail;
     private String description;
-    @Column(nullable = false)
+    @Lob
+    @Column(name = "content", columnDefinition = "LONGTEXT", nullable = false)
     private String content;
     @JsonBackReference
     @ManyToOne
@@ -112,5 +114,13 @@ public class Blog {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 }
