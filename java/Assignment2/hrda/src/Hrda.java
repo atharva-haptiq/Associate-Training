@@ -1,4 +1,5 @@
-import hrda.model.Department;
+package Assignment2.hrda.src;
+
 import hrda.model.Employee;
 import hrda.repository.DBConnection;
 import hrda.service.EmployeeService;
@@ -9,7 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class Hrda {
     public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
         int choice;
