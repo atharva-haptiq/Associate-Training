@@ -1,162 +1,158 @@
 package Assignment2.hrda.src;
 
-import hrda.model.Employee;
-import hrda.repository.DBConnection;
-import hrda.service.EmployeeService;
-import hrda.serviceImpls.DepartmentService;
-import hrda.serviceImpls.EmployeeServiceImpl;
+import Assignment2.hrda.src.hrda.model.Employee;
+import Assignment2.hrda.src.hrda.repository.DBConnection;
+import Assignment2.hrda.src.hrda.service.EmployeeService;
+import Assignment2.hrda.src.hrda.serviceImpls.DepartmentService;
+import Assignment2.hrda.src.hrda.serviceImpls.EmployeeServiceImpl;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Entry point for the HRDA (Human Resource Data Application).
+ * Provides a menu-driven interface for managing employees and departments.
+ */
 public class Hrda {
+
+    private static final Logger log = LoggerFactory.getLogger(Hrda.class);
+
     public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
         DBConnection dbConnection = new DBConnection();
         DepartmentService departmentService = new DepartmentService(dbConnection);
-        EmployeeService employeeService = new EmployeeServiceImpl(dbConnection,departmentService);
+        EmployeeService employeeService = new EmployeeServiceImpl(dbConnection, departmentService);
 
         while (true) {
             printMenu();
 
-            System.out.print("Enter your choice: ");
+            log.info("Enter your choice: ");
             if (scanner.hasNextInt()) {
                 choice = scanner.nextInt();
                 scanner.nextLine();
-                List<Employee> employeeList;
-                String departmentName;
+
                 switch (choice) {
-                    case 1:
-                        System.out.println("Showing all employees...");
-                        employeeList = employeeService.getAllEmployee();
-                        employeeList
+                    case 1 -> {
+                        log.info("Showing all employees...");
+                        List<Employee> employees = employeeService.getAllEmployee();
+                        employees.forEach(Hrda::printEmployeeInfo);
+                    }
+                    case 2 -> {
+                        log.info("Showing employees earning more than ₹50,000...");
+                        employeeService.getAllEmployee()
                                 .stream()
-                                .forEach(employee -> {
-                                    System.out.println("------------Employee's Info------------------");
-                                    System.out.println("Employee name: "+employee.getEmployeeName());
-                                    System.out.println("Employee's department: "+employee.getDepartment().getDepartment());
-                                    System.out.println("Employee's salary: "+employee.getSalary());
-                                    System.out.println("Employee's experience in years: "+employee.getExperienceYears());
-                                    System.out.println("-------------------------------");
-                                });
-                        break;
-                    case 2:
-                        System.out.println("Showing employees earning more than ₹50,000...");
-                        employeeList = employeeService.getAllEmployee();
-                        employeeList
+                                .filter(emp -> emp.getSalary() > 50000)
+                                .forEach(Hrda::printEmployeeInfo);
+                    }
+                    case 3 -> {
+                        log.info("Grouping employees by department...");
+                        log.info("Enter the department name:");
+                        String departmentName = scanner.nextLine();
+                        employeeService.getAllEmployee()
                                 .stream()
-                                .filter(employee -> employee.getSalary() > 50000)
-                                .forEach(employee -> {
-                                    System.out.println("------------Employee's Info------------------");
-                                    System.out.println("Employee name: "+employee.getEmployeeName());
-                                    System.out.println("Employee's department: "+employee.getDepartment().getDepartment());
-                                    System.out.println("Employee's salary: "+employee.getSalary());
-                                    System.out.println("Employee's experience in years: "+employee.getExperienceYears());
-                                    System.out.println("-------------------------------");
-                                });
+                                .filter(emp -> emp.getDepartment().getDepartment().equalsIgnoreCase(departmentName))
+                                .forEach(Hrda::printEmployeeInfo);
+                    }
+                    case 4 -> {
+                        log.info("Calculating average salary per department...");
+                        log.info("Enter department name: ");
+                        String departmentName = scanner.nextLine();
+                        Double avgSalary = employeeService.averageSalaryOfDepartment(departmentName);
+                        log.info("Average salary of {} department is: {}", departmentName, avgSalary);
+                    }
+                    case 5 -> {
+                        log.info("Sorting employees by experience and salary...");
+                        log.info("Enter the minimum experience: ");
+                        int minExp = scanner.nextInt();
+                        log.info("Enter the minimum salary: ");
+                        double minSalary = scanner.nextDouble();
+                        scanner.nextLine();
 
-                        break;
-                    case 3:
-                        System.out.println("Grouping employees by department...");
-                        System.out.println("Enter the department name you want to group accordingly");
-                        departmentName = scanner.nextLine();
-                        employeeList = employeeService.getAllEmployee();
-                        String finalDepartmentName = departmentName;
-                        employeeList
+                        employeeService.getAllEmployee()
                                 .stream()
-                                .filter(employee -> employee.getDepartment().getDepartment().equals(finalDepartmentName))
-                                .forEach(employee -> {
-                                    System.out.println("------------Employee's Info------------------");
-                                    System.out.println("Employee name: "+employee.getEmployeeName());
-                                    System.out.println("Employee's department: "+employee.getDepartment().getDepartment());
-                                    System.out.println("Employee's salary: "+employee.getSalary());
-                                    System.out.println("Employee's experience in years: "+employee.getExperienceYears());
-                                    System.out.println("-------------------------------");
-                                });
-                        break;
-                    case 4:
-                        System.out.println("Calculating average salary per department...");
-                        System.out.println("Enter department name: ");
-                        departmentName = scanner.nextLine();
-                        Double averageSalary = employeeService.averageSalaryOfDepartment(departmentName);
-                        System.out.println(" ");
-                        System.out.println("Average Salary of "+departmentName+" department is: "+averageSalary);
-                        break;
-                    case 5:
-                        System.out.println("Sorting employees by experience and salary...");
-                        System.out.println("Enter the minimum experience of employee: ");
-                        Integer minExp = scanner.nextInt();
-                        System.out.println("Enter a minimum salary you want to sort for:");
-                        Double minSalary = scanner.nextDouble();
-                        employeeList = employeeService.getAllEmployee();
-                        employeeList
-                                .stream()
-                                .filter(employee -> employee.getSalary() >= minSalary && employee.getExperienceYears()>= minExp )
-                                .forEach(employee -> {
-                                    System.out.println("------------Employee's Info------------------");
-                                    System.out.println("Employee name: "+employee.getEmployeeName());
-                                    System.out.println("Employee's department: "+employee.getDepartment().getDepartment());
-                                    System.out.println("Employee's salary: "+employee.getSalary());
-                                    System.out.println("Employee's experience in years: "+employee.getExperienceYears());
-                                    System.out.println("-------------------------------");
-                                });
-                        break;
-                    case 6:
-                        System.out.println("Adding an empoloyee...");
-                        System.out.println("Enter an employee name you want to add");
-                        String employeeName = scanner.nextLine();
-                        System.out.println("Enter employee's department");
-                        departmentName = scanner.nextLine();
-                        System.out.println("Enter employee's salary");
-                        Double employeeSalary = scanner.nextDouble();
-                        System.out.println("Enter Employee's Experience in years");
-                        Integer experience = scanner.nextInt();
+                                .filter(emp -> emp.getSalary() >= minSalary && emp.getExperienceYears() >= minExp)
+                                .forEach(Hrda::printEmployeeInfo);
+                    }
+                    case 6 -> {
+                        log.info("Adding a new employee...");
+                        log.info("Enter employee name: ");
+                        String empName = scanner.nextLine();
+                        log.info("Enter department: ");
+                        String deptName = scanner.nextLine();
+                        log.info("Enter salary: ");
+                        double salary = scanner.nextDouble();
+                        log.info("Enter experience (years): ");
+                        int exp = scanner.nextInt();
+                        scanner.nextLine();
 
-                        if(employeeService.addEmployee(employeeName, departmentName, employeeSalary, experience)) System.out.println("Employee has been added successfully!");
-                        else System.out.println("Employee failed to add");
-                        break;
-                    case 7:
-                        System.out.println("Adding deprtment...");
-                        System.out.println("Enter the department's name you want to add");
-                        departmentName = scanner.nextLine();
-                        if(departmentService.addDepartment(departmentName)) System.out.println("Department has been added successfully!");
-                        else System.out.println("Department failed to add");
-                        break;
-                    case 8:
-                        System.out.println("Exiting...");
+                        if (employeeService.addEmployee(empName, deptName, salary, exp)) {
+                            log.info("✅ Employee added successfully!");
+                        } else {
+                            log.warn("❌ Failed to add employee.");
+                        }
+                    }
+                    case 7 -> {
+                        log.info("Adding a new department...");
+                        log.info("Enter department name: ");
+                        String deptName = scanner.nextLine();
+                        if (departmentService.addDepartment(deptName)) {
+                            log.info("✅ Department added successfully!");
+                        } else {
+                            log.warn("❌ Failed to add department.");
+                        }
+                    }
+                    case 8 -> {
+                        log.info("Exiting application...");
                         System.exit(0);
-                        break;
-                    default:
-                        System.out.println("Invalid choice. Please try again.");
+                    }
+                    default -> log.warn("Invalid choice. Please try again.");
                 }
 
             } else {
-                System.out.println("Please enter a valid number.");
+                log.warn("Invalid input. Please enter a number.");
                 scanner.nextLine();
             }
 
-            System.out.println("\nPress Enter to continue...");
+            log.info("\nPress Enter to continue...");
             scanner.nextLine();
         }
     }
 
-    private static void printMenu() {
-        System.out.println("==========================================");
-        System.out.println("                 HRDA                     ");
-        System.out.println("==========================================");
-        System.out.println("1. Show all employees");
-        System.out.println("2. Show employees earning more than ₹50,000");
-        System.out.println("3. Group employees by department");
-        System.out.println("4. Show average salary per department");
-        System.out.println("5. Sort employees by experience and salary");
-        System.out.println("6. Add an Employee");
-        System.out.println("7. Add a Department");
-        System.out.println("8. Exit");
-        System.out.println("------------------------------------------");
+    /**
+     * Prints detailed information about an employee.
+     *
+     * @param employee the employee whose details are to be printed
+     */
+    private static void printEmployeeInfo(Employee employee) {
+        log.info("------------ Employee Info ------------------");
+        log.info("Name: {}", employee.getEmployeeName());
+        log.info("Department: {}", employee.getDepartment().getDepartment());
+        log.info("Salary: {}", employee.getSalary());
+        log.info("Experience (years): {}", employee.getExperienceYears());
+        log.info("---------------------------------------------");
     }
 
-
+    /**
+     * Displays the main application menu.
+     */
+    private static void printMenu() {
+        log.info("==========================================");
+        log.info("                 HRDA                     ");
+        log.info("==========================================");
+        log.info("1. Show all employees");
+        log.info("2. Show employees earning more than ₹50,000");
+        log.info("3. Group employees by department");
+        log.info("4. Show average salary per department");
+        log.info("5. Sort employees by experience and salary");
+        log.info("6. Add an Employee");
+        log.info("7. Add a Department");
+        log.info("8. Exit");
+        log.info("------------------------------------------");
+    }
 }

@@ -1,41 +1,43 @@
-package hrda.repository;
+package Assignment2.hrda.src.hrda.repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+/**
+ * Utility class for managing database connections.
+ */
 public class DBConnection {
+
+    private static final Logger LOGGER = Logger.getLogger(DBConnection.class.getName());
+
     private final String url = "jdbc:mysql://localhost:3306/hrda";
     private final String user = "atharva.haptiq";
     private final String password = "pass1234";
 
+    /**
+     * Establishes and returns a new connection to the database.
+     *
+     * @return a Connection object
+     * @throws SQLException if a database access error occurs
+     */
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(url, user, password);
     }
 
+    /**
+     * Main method to test database connection.
+     *
+     * @param args command line arguments
+     */
     public static void main(String[] args) {
         DBConnection db = new DBConnection();
         try (Connection connection = db.getConnection()) {
-            System.out.println("DB connected successfully!");
-
-            /*
-            String query = "SELECT * FROM Department WHERE id = ?";
-            try (PreparedStatement statement = connection.prepareStatement(query)) {
-                statement.setInt(1, 1);
-                try (ResultSet resultSet = statement.executeQuery()) {
-                    while (resultSet.next()) {
-                        int id = resultSet.getInt("id");
-                        String department = resultSet.getString("department");
-
-                        System.out.println("ID: " + id);
-                        System.out.println("Department: " + department);
-                    }
-                }
-            }
-            */
-
+            LOGGER.info("Database connected successfully!");
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error connecting to the database", e);
         }
     }
 }
