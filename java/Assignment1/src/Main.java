@@ -1,3 +1,5 @@
+package Assignment1.src;
+
 import studentReports.ReportUtil;
 import studentReports.Student;
 import studentReports.StudentService;
@@ -84,7 +86,7 @@ public class Main {
                     break;
 
                 case 5:
-                    System.out.print("Enter filename to save as text (e.g., report.txt): ");
+                    System.out.print("Enter filename to save as text (e.g., alice.txt): ");
                     String textFile = scanner.nextLine();
 
                     System.out.print("Enter student name: ");
