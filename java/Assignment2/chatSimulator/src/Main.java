@@ -1,88 +1,114 @@
 package Assignment2.chatSimulator.src;
 
-import generics.Message;
-import entity.User;
-import service.UserService;
+import Assignment2.chatSimulator.src.entity.User;
+import Assignment2.chatSimulator.src.generics.Message;
+import Assignment2.chatSimulator.src.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.List;
+import java.util.Scanner;
 
+/**
+ * Entry point for the Chat Simulator application.
+ * <p>
+ * Provides a console-based interface for users to:
+ * <ul>
+ *     <li>Join chat</li>
+ *     <li>Send messages</li>
+ *     <li>View messages</li>
+ *     <li>View active users</li>
+ *     <li>Exit chat</li>
+ * </ul>
+ */
 public class Main {
+
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
+
+    /**
+     * Starts the chat simulator console application.
+     *
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         UserService<String> userService = new UserService<>();
 
         while (true) {
+            logger.info("==========================================");
+            logger.info("                 Chat Out                 ");
+            logger.info("==========================================");
+            logger.info("1. Join Chat");
+            logger.info("2. Send Message");
+            logger.info("3. View Messages");
+            logger.info("4. View Active Users");
+            logger.info("5. Exit");
+            logger.info("------------------------------------------");
+            logger.info("Enter your choice: ");
 
-            System.out.println("==========================================");
-            System.out.println("                 Chat Out                     ");
-            System.out.println("==========================================");
-            System.out.println("1. Join Chat");
-            System.out.println("2. Send Message");
-            System.out.println("3. View Messages");
-            System.out.println("4. View Active Users");
-            System.out.println("5. Exit");
-            System.out.println("------------------------------------------");
-
-            System.out.print("Enter your choice: ");
             String choice = scanner.nextLine().trim();
 
             switch (choice) {
-                case "1":
-                    System.out.print("Enter username to join chat: ");
+                case "1" -> {
+                    logger.info("Enter username to join chat: ");
                     String username = scanner.nextLine().trim();
                     userService.joinChat(username);
-                    break;
+                    logger.info("User {} joined the chat.", username);
+                }
 
-                case "2":
-                    System.out.print("Enter from's username: ");
+                case "2" -> {
+                    logger.info("Enter sender's username: ");
                     String senderName = scanner.nextLine().trim();
-                    System.out.print("Enter recipients username you want to send message: ");
+                    logger.info("Enter recipient's username: ");
                     String receiverName = scanner.nextLine().trim();
-                    System.out.print("Enter message: ");
+                    logger.info("Enter message: ");
                     String content = scanner.nextLine().trim();
 
                     User sender = new User(senderName);
                     User receiver = new User(receiverName);
 
                     if (sender != null && receiver != null) {
-                        Message<String> message = new Message<>(sender,content,receiver);
+                        Message<String> message = new Message<>(sender, content, receiver);
                         userService.sendMessage(message);
-                        System.out.println("Message sent!");
+                        logger.info("Message sent from {} to {}.", senderName, receiverName);
                     } else {
-                        System.out.println("Sender or receiver does not exist.");
+                        logger.warn("Sender or receiver does not exist.");
                     }
-                    break;
+                }
 
-                case "3":
-                    System.out.print("Enter your username to check messages: ");
+                case "3" -> {
+                    logger.info("Enter your username to check messages: ");
                     String currentUser = scanner.nextLine();
-                    System.out.print("Enter the recipients name you want to check message for: ");
+                    logger.info("Enter the sender's username whose messages you want to check: ");
                     String fromUser = scanner.nextLine();
                     List<Message<String>> messages = userService.getMessages(fromUser, currentUser);
 
                     if (messages == null || messages.isEmpty()) {
-                        System.out.println("No new messages.");
+                        logger.info("No new messages for user {}", currentUser);
                     } else {
-                        System.out.println("Messages received:");
+                        logger.info("Messages received for {}:", currentUser);
                         for (Message<String> msg : messages) {
-                            System.out.println("From " + msg.getSender().getUsername() + ": " + "time: "+msg.getTimestamp()+" :" + msg.getContent());
+                            logger.info("From {} at {}: {}",
+                                    msg.getSender().getUsername(),
+                                    msg.getTimestamp(),
+                                    msg.getContent());
                         }
                     }
-                    break;
+                }
 
-                case "4":
-                    System.out.println("Active Users:");
+                case "4" -> {
+                    logger.info("Active Users:");
                     for (User user : userService.getActiveUsers()) {
-                        System.out.println("- " + user.getUsername());
+                        logger.info("- {}", user.getUsername());
                     }
-                    break;
+                }
 
-                case "5":
-                    System.out.println("Exiting chat. Goodbye!");
+                case "5" -> {
+                    logger.info("Exiting chat. Goodbye!");
                     return;
+                }
 
-                default:
-                    System.out.println("❗ Invalid choice. Try again.");
+                default -> logger.warn("❗ Invalid choice. Try again.");
             }
         }
     }
