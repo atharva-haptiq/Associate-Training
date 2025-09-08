@@ -1,24 +1,49 @@
-package studentReports;
+package Assignment1.src.studentReports;
 
-import java.util.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Service class to manage student records and their results.
+ */
 public class StudentService {
 
-    Integer studentsAverage = 0;
-    double studentPercentage = 0;
-    Integer obtainedMarks = 0;
-    Integer totalMarks = 400;
+    private static final Logger logger = LoggerFactory.getLogger(StudentService.class);
 
-    List<Student> students = new ArrayList<>();
+    /** Maximum possible marks across all subjects. */
+    private static final int TOTAL_MARKS = 400;
 
-    Scanner scanner = new Scanner(System.in);
-    public String addStudent(String name){
-        if (name == null || name.trim().isEmpty()) System.out.println("Name cannot be null or empty.");
+    /** List of all registered students. */
+    private final List<Student> students = new ArrayList<>();
+
+    /**
+     * Adds a new student to the system.
+     *
+     * @param name the name of the student
+     * @return the name of the added student
+     */
+    public String addStudent(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            logger.warn("Name cannot be null or empty.");
+            return null;
+        }
         Student student = new Student();
         student.setStudentName(name);
         students.add(student);
+        logger.info("Student {} added successfully.", name);
         return student.getStudentName();
     }
+
+    /**
+     * Retrieves a student by name (case-insensitive).
+     *
+     * @param name the name of the student
+     * @return the student object, or {@code null} if not found
+     */
     public Student getStudentByName(String name) {
         for (Student student : students) {
             if (student.getStudentName().equalsIgnoreCase(name)) {
@@ -28,64 +53,62 @@ public class StudentService {
         return null;
     }
 
-    public Map<String, Integer> registerMarks(Student student, Map<String, Integer> marks){
-        for(Map.Entry<String, Integer> mark: marks.entrySet()){
-            if(mark.getValue()>=0 && mark.getValue()<=100){
+    /**
+     * Registers marks for a student, validating that each mark is within range (0–100).
+     *
+     * @param student the student for whom marks are registered
+     * @param marks   a map of subject and marks
+     * @return the updated subject marks map
+     */
+    public Map<String, Integer> registerMarks(Student student, Map<String, Integer> marks) {
+        for (Map.Entry<String, Integer> mark : marks.entrySet()) {
+            if (mark.getValue() >= 0 && mark.getValue() <= 100) {
                 student.getSubjectMarks().put(mark.getKey(), mark.getValue());
-            }
-            else{
-                System.out.println("Invalid marks Entered"+mark.getKey()+" "+mark.getValue());
+            } else {
+                logger.error("Invalid marks entered for {}: {}", mark.getKey(), mark.getValue());
             }
         }
+        logger.info("Marks registered for student: {}", student.getStudentName());
         return student.getSubjectMarks();
     }
 
-    public void calculateResult(Student student){
-//        Student student = getStudentByName(name);
+    /**
+     * Calculates the result for a given student, including total marks, percentage,
+     * pass/fail status, and average marks.
+     *
+     * @param student the student whose result is calculated
+     */
+    public void calculateResult(Student student) {
         Map<String, Integer> marks = student.getSubjectMarks();
-        for(Map.Entry<String, Integer> mark : marks.entrySet()){
-            obtainedMarks+=mark.getValue();
+
+        int obtainedMarks = 0;
+        for (Map.Entry<String, Integer> mark : marks.entrySet()) {
+            obtainedMarks += mark.getValue();
         }
 
-        System.out.println("----------------------------------------");
-        System.out.println("Total obtained Marks is: "+obtainedMarks);
-        System.out.println("----------------------------------------");
+        logger.info("----------------------------------------");
+        logger.info("Total obtained marks: {}", obtainedMarks);
+        logger.info("----------------------------------------");
 
-        studentPercentage = ((double) obtainedMarks / totalMarks) * 100;
-        System.out.println("Percentage of "+student.getStudentName()+" is "+studentPercentage+"%");
-        System.out.println("----------------------------------------");
+        double studentPercentage = ((double) obtainedMarks / TOTAL_MARKS) * 100;
+        logger.info("Percentage of {} is {}%", student.getStudentName(), studentPercentage);
+        logger.info("----------------------------------------");
 
-        if(studentPercentage >= 35){
+        if (studentPercentage >= 35) {
             student.setPassStatus(true);
-            System.out.println(student.getStudentName()+" has passed with "+studentPercentage+"%");
-            System.out.println("----------------------------------------");
-        }
-        else {
+            logger.info("{} has passed with {}%", student.getStudentName(), studentPercentage);
+        } else {
             student.setPassStatus(false);
-            System.out.println(student.getStudentName()+" has failed with "+studentPercentage+"%");
-            System.out.println("----------------------------------------");
+            logger.info("{} has failed with {}%", student.getStudentName(), studentPercentage);
         }
+        logger.info("----------------------------------------");
 
-        studentsAverage = obtainedMarks/marks.size();
+        int studentsAverage = obtainedMarks / marks.size();
+        logger.info("{}'s average marks is {}", student.getStudentName(), studentsAverage);
+        logger.info("----------------------------------------");
 
-        System.out.println(student.getStudentName()+"'s average marks is "+studentsAverage);
-        System.out.println("----------------------------------------");
-
+        // Save results into the student object
         student.setPercentage(studentPercentage);
         student.setAverageMarks(studentsAverage);
-//        marks.clear();
-         studentsAverage = 0;
-         studentPercentage = 0;
-         obtainedMarks = 0;
-
-
     }
-
-
-
-
-
-
-
-
 }
